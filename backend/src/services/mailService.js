@@ -152,7 +152,7 @@ const RESET_TEXT = {
   vi: {
     subject: 'Đặt lại mật khẩu Science IQ',
     preheader: (account, m) => `Đường dẫn đặt mật khẩu mới cho tài khoản ${account}, hết hạn sau ${m} phút.`,
-    tagline: 'Phần mềm học Khoa học tự nhiên 8 cùng AI',
+    tagline: 'Nền tảng học tập thông minh, kết hợp AI và đánh giá năng lực',
     title: 'Đặt lại mật khẩu',
     hello: (name) => `Chào ${name},`,
     intro: 'Chúng tôi nhận được yêu cầu đặt lại mật khẩu cho tài khoản Science IQ của bạn. Bấm nút bên dưới để tạo mật khẩu mới.',
@@ -173,7 +173,7 @@ const RESET_TEXT = {
   en: {
     subject: 'Reset your Science IQ password',
     preheader: (account, m) => `Your link to set a new password for ${account}. It expires in ${m} minutes.`,
-    tagline: 'Learn Grade 8 Natural Science with AI',
+    tagline: 'A smart learning platform combining AI and competency assessment',
     title: 'Reset your password',
     hello: (name) => `Hi ${name},`,
     intro: 'We received a request to reset the password of your Science IQ account. Press the button below to choose a new password.',

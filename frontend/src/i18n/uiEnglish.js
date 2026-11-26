@@ -6,7 +6,7 @@
 
 export const EXACT = {
   // ---- Chung ----
-  'Phần mềm học Khoa học tự nhiên 8 cùng AI': 'Learn Grade 8 Natural Science with AI',
+  'Nền tảng học tập thông minh, kết hợp AI và đánh giá năng lực': 'A smart learning platform combining AI and competency assessment',
   'Đang tải…': 'Loading…',
   'Đang tải...': 'Loading...',
   'Đang lưu…': 'Saving…',

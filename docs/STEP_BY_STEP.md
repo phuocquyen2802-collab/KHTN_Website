@@ -186,8 +186,39 @@ ngay bằng tài khoản mẫu trong README.md.
   thiệu thành "Giáo viên thực hiện: Nguyễn Kim Chi"
 - [x] Bước 40 (tài khoản mặc định): Thay tài khoản giáo viên mặc định `admin`
   bằng tài khoản `nguyenkimchi` (tên hiển thị "Nguyễn Kim Chi")
+- [x] Bước 41 (khẩu hiệu): Đổi khẩu hiệu thành "Nền tảng học tập thông minh,
+  kết hợp AI và đánh giá năng lực"
 
 ## Lịch sử cập nhật
+
+### 2026-11-26 - Đổi khẩu hiệu website (Bước 41)
+- Đã làm gì: Đổi khẩu hiệu "Phần mềm học Khoa học tự nhiên 8 cùng AI" thành
+  "Nền tảng học tập thông minh, kết hợp AI và đánh giá năng lực" (bản tiếng
+  Anh: "A smart learning platform combining AI and competency assessment").
+  Sửa ở: `APP_TAGLINE` trong `frontend/src/config/brand.js` (thanh bên dùng
+  hằng số này), `TAGLINE` + `pageTitle` tiếng Anh trong `i18n/publicText.js`
+  (trang giới thiệu, trang đăng nhập), khoá dịch trong `i18n/uiEnglish.js`,
+  thẻ `<title>` và mô tả trong `frontend/index.html` (mô tả vẫn nêu rõ môn
+  "Khoa học tự nhiên 8" vì khẩu hiệu mới không còn ghi tên môn), dòng khẩu
+  hiệu trong email đặt lại mật khẩu (`mailService.js`), câu tự giới thiệu của
+  Trợ lý AI (`geminiService.js`). Hai tiêu đề lớn "Learn Grade 8 Natural
+  Science with AI and know exactly what to review." ở bản tiếng Anh giữ
+  nguyên vì là tiêu đề trang, không phải khẩu hiệu.
+- Vì sao làm như vậy: Theo yêu cầu người dùng. Khẩu hiệu mới dài hơn nên ở
+  thanh bên (rộng 264px) bị xuống 3 dòng, dòng cuối chỉ còn chữ "năng lực" -
+  thêm `text-wrap: balance` cho `.sidebar-brand-sub` trong `index.css` để chữ
+  chia đều 3 dòng ("Nền tảng học tập / thông minh, kết hợp AI / và đánh giá
+  năng lực"). Trình duyệt cũ không hỗ trợ thuộc tính này thì vẫn xuống dòng
+  bình thường như trước.
+- Kiểm tra: dựng thử khối tên + khẩu hiệu ở thanh bên và trang đăng nhập
+  bằng Chrome headless với đúng font Be Vietnam Pro (hiển thị gọn); build
+  frontend và `node --check` backend đều đạt.
+- File nào bị ảnh hưởng: `frontend/src/config/brand.js`, `frontend/index.html`,
+  `frontend/src/i18n/publicText.js`, `frontend/src/i18n/uiEnglish.js`,
+  `frontend/src/index.css`, `backend/src/services/mailService.js`,
+  `backend/src/services/geminiService.js`, `docs/STEP_BY_STEP.md`.
+- Việc cần làm tiếp theo: không có. Backend đang chạy cần khởi động lại (hoặc
+  để nodemon tự nạp lại) thì email và Trợ lý AI mới dùng khẩu hiệu mới.
 
 ### 2026-11-26 - Đổi tài khoản giáo viên mặc định thành nguyenkimchi (Bước 40)
 - Đã làm gì: Sửa bản ghi giáo viên duy nhất trong `data/users.json`: tên

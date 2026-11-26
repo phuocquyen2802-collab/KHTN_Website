@@ -5,7 +5,7 @@ import { APP_NAME, APP_TAGLINE } from '../config/brand';
 
 export const TAGLINE = {
   vi: APP_TAGLINE,
-  en: 'Learn Grade 8 Natural Science with AI',
+  en: 'A smart learning platform combining AI and competency assessment',
 };
 
 export const SWITCH_TEXT = {
@@ -104,7 +104,7 @@ export const LANDING_TEXT = {
   },
 
   en: {
-    pageTitle: `${APP_NAME} - Learn Grade 8 Natural Science with AI`,
+    pageTitle: `${APP_NAME} - A smart learning platform combining AI and competency assessment`,
     homeLabel: `${APP_NAME} - Home`,
     navLabel: 'On this page',
     nav: { features: 'Features', how: 'How it works', audience: 'Teachers and students' },
