@@ -4,6 +4,7 @@ import api from '../services/api';
 import useAutoRefresh, { setIfChanged } from '../hooks/useAutoRefresh';
 import WeakTopicsChart from '../components/WeakTopicsChart';
 import UiIcon, { scoreLevel, formatScore, ScoreTrend } from '../components/UiIcon';
+import { BuddyAvatar } from '../components/Buddy';
 
 export default function TeacherAnalyticsPage() {
   const [searchParams] = useSearchParams();
@@ -279,9 +280,7 @@ export default function TeacherAnalyticsPage() {
           <div className="card profile-card">
             <div className="profile-head">
               <div className="profile-id">
-                <div className="avatar is-lg" aria-hidden="true">
-                  {(currentStudent.name || '?').trim().charAt(0).toUpperCase()}
-                </div>
+                <BuddyAvatar userId={currentStudent.id} size={52} />
                 <div>
                   <h2>{currentStudent.name}</h2>
                   <div className="meta-row">

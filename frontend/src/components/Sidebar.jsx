@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import BrandMark from './BrandMark';
 import { LanguageSwitch, ThemeSwitch } from './PreferenceSwitches';
 import { APP_NAME, APP_TAGLINE } from '../config/brand';
+import { BuddyAvatar } from './Buddy';
 
 // Bộ icon nét (stroke) 24x24 dùng cho menu - thay cho emoji để giao diện
 // đồng nhất trên mọi hệ điều hành.
@@ -237,9 +238,13 @@ export default function Sidebar() {
 
       <div className="sidebar-footer">
         <div className="sidebar-user-card">
-          <div className={`user-avatar ${isTeacher ? 'teacher' : 'student'}`} aria-hidden="true">
-            {avatarChar}
-          </div>
+          {isTeacher ? (
+            <div className="user-avatar teacher" aria-hidden="true">
+              {avatarChar}
+            </div>
+          ) : (
+            <BuddyAvatar userId={user.id} size={40} />
+          )}
           <div className="sidebar-user-info">
             <div className="sidebar-user-name" title={user.name}>{user.name}</div>
             <div className="sidebar-user-role">

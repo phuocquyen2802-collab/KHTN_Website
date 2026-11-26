@@ -83,6 +83,14 @@ export const EXACT = {
   'Xem trước': 'Preview',
   'Xem đề': 'View test',
   'Xem kết quả': 'View results',
+  // ---- Bạn đồng hành (khung chào ở trang Luyện đề) ----
+  'Chào bạn!': 'Hi there!',
+  'Chào': 'Hi',
+  'Mình đang xem hôm nay có đề nào mới…': 'Checking for new tests today…',
+  'Chưa có đề nào được giao. Trong lúc chờ, mình cùng chơi Đường đua Khoa học để luyện thêm nhé!':
+    "No tests yet. While you wait, let's practise in the Science Race game!",
+  'Vào trò chơi': 'Play the game',
+  'Làm đề ngay': 'Start a test',
   'Xem bài làm': 'View submission',
   'Làm lại': 'Retake',
   'Bắt đầu': 'Start',
@@ -1284,4 +1292,8 @@ export const PATTERNS = [
   [/^AI gửi ngày (.+)$/, 'Sent by AI on $1'],
   [/^Giáo viên đã duyệt (.+)$/, 'Approved by teacher on $1'],
   [/^AI vừa soạn xong cho bài "(.*)"(?: \(Lần (\d+)\))?$/, (m, title, n) => `written by AI for "${title}"${n ? ` (Attempt ${n})` : ''}`],
+
+  // Bạn đồng hành (khung chào ở trang Luyện đề)
+  [/^Bạn còn (\d+) đề chưa làm\. Làm xong là biết ngay phần nào cần ôn thêm\.$/, (m, n) => (n === '1' ? 'You have 1 test left. Finish it to see right away what to review.' : `You have ${n} tests left. Finish them to see right away what to review.`)],
+  [/^Bạn đã làm hết (\d+) đề rồi, giỏi quá! Xem lại kết quả để biết chủ đề nào cần ôn\.$/, (m, n) => (n === '1' ? 'You have finished your test, great job! Check your results to see which topics to review.' : `You have finished all ${n} tests, great job! Check your results to see which topics to review.`)],
 ];

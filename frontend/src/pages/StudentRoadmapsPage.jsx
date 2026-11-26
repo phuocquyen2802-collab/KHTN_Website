@@ -5,6 +5,7 @@ import useAutoRefresh, { setIfChanged } from '../hooks/useAutoRefresh';
 import RoadmapSteps, { RoadmapSummary } from '../components/RoadmapSteps';
 import UiIcon from '../components/UiIcon';
 import { RoadmapSentPill } from '../components/RoadmapStatus';
+import { EmptyBuddy } from '../components/Buddy';
 
 export default function StudentRoadmapsPage() {
   const [data, setData] = useState(null);
@@ -136,7 +137,7 @@ export default function StudentRoadmapsPage() {
       {submissionsWithRoadmap.length === 0 ? (
         <div className="card">
           <div className="empty-state">
-            <div className="empty-state-icon is-svg"><UiIcon name="route" size={24} /></div>
+            <EmptyBuddy />
             <div className="empty-state-title">Chưa có lộ trình ôn tập nào</div>
             <p className="empty-state-desc">
               Sau khi bạn nộp bài có câu sai, lộ trình ôn tập AI soạn riêng cho bạn sẽ hiện ở đây.

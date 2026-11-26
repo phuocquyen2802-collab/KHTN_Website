@@ -277,7 +277,7 @@ export default function ResultPage() {
                           if (isSelected) rowClass += a.isCorrect ? ' is-picked-right' : ' wrong';
                           return (
                             <div key={opt.key} className={rowClass}>
-                              <span className="option-key">{opt.key}.</span>
+                              <span className="option-key">{opt.key}</span>
                               <span className="option-text" dangerouslySetInnerHTML={{ __html: renderMath(opt.text) }} />
                               {isSelected && (
                                 <span className={`option-tag ${a.isCorrect ? 'is-right' : 'is-wrong'}`}>

@@ -482,7 +482,7 @@ export default function AiAssistantPage() {
                       fontSize: 14.5,
                       lineHeight: 1.6,
                       boxShadow: isUser
-                        ? '0 4px 12px rgba(41, 82, 217, 0.25)'
+                        ? '0 4px 12px rgba(79, 99, 247, 0.25)'
                         : '0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
                       border: isUser ? 'none' : '1px solid var(--line)',
                       wordBreak: 'break-word',

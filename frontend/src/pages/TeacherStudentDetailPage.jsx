@@ -5,6 +5,7 @@ import WeakTopicsChart from '../components/WeakTopicsChart';
 import UiIcon, { scoreLevel, formatScore } from '../components/UiIcon';
 import GameHistoryPanel from '../components/GameHistory';
 import { renderMath } from '../utils/mathRender';
+import { BuddyAvatar } from '../components/Buddy';
 
 export default function TeacherStudentDetailPage() {
   const { studentId } = useParams();
@@ -84,7 +85,6 @@ export default function TeacherStudentDetailPage() {
     );
   }
 
-  const initial = stats.student.name ? stats.student.name.trim().charAt(0).toUpperCase() : 'H';
   const avgScore = submissions.length > 0
     ? submissions.reduce((sum, s) => sum + (Number(s.score) || 0), 0) / submissions.length
     : null;
@@ -106,7 +106,7 @@ export default function TeacherStudentDetailPage() {
       <div className="card profile-card">
         <div className="profile-head">
           <div className="profile-id">
-            <div className="avatar is-lg" aria-hidden="true">{initial}</div>
+            <BuddyAvatar userId={studentId} size={52} />
             <div>
               <h1 className="profile-name">{stats.student.name}</h1>
               <div className="meta-row">

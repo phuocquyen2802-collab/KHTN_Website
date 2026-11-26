@@ -1,7 +1,7 @@
 // Pháo giấy màu vẽ trên <canvas> (không cần thư viện ngoài).
 // Bắn 2 loạt từ 2 góc dưới lên giữa màn hình rồi rơi xuống, kèm mưa giấy từ
 // trên. Trả về hàm dừng sớm.
-const COLORS = ['#ffcf3f', '#f6a04d', '#2952d9', '#5b7cf0', '#e5484d', '#ff8fa3', '#34c48b', '#a78bfa'];
+const COLORS = ['#ffcf3f', '#f6a04d', '#4f63f7', '#5b7cf0', '#e5484d', '#ff8fa3', '#34c48b', '#a78bfa'];
 
 export function launchConfetti(canvas, { duration = 3800 } = {}) {
   if (!canvas) return () => {};

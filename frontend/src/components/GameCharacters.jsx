@@ -171,7 +171,9 @@ function Front({ c, mood }) {
   }
 }
 
-export default function GameCharacter({ id, mood = 'neutral', size = 96, className = '' }) {
+// crop: chỉ lấy phần đầu (khung vuông) - dùng làm ảnh đại diện tròn.
+// decorative: hình chỉ để trang trí (bên cạnh đã có chữ) - ẩn với trình đọc màn hình.
+export default function GameCharacter({ id, mood = 'neutral', size = 96, className = '', crop = false, decorative = false }) {
   const c = CHARACTERS.find((x) => x.id === id) || CHARACTERS[0];
   const outline = c.id === 'delta' ? c.dark : undefined;
   const fontSize = c.symbol.length > 2 ? 13 : 19;
@@ -180,10 +182,12 @@ export default function GameCharacter({ id, mood = 'neutral', size = 96, classNa
     <svg
       className={`game-char is-${mood}${className ? ` ${className}` : ''}`}
       width={size}
-      height={size * (130 / 120)}
-      viewBox="0 0 120 130"
-      role="img"
-      aria-label={c.name}
+      height={crop ? size : size * (130 / 120)}
+      viewBox={crop ? '10 10 100 100' : '0 0 120 130'}
+      role={decorative ? undefined : 'img'}
+      aria-label={decorative ? undefined : c.name}
+      aria-hidden={decorative || undefined}
+      focusable="false"
     >
       <ellipse cx="60" cy="124" rx="34" ry="5" fill="rgba(21, 32, 58, 0.16)" />
       <Back c={c} />

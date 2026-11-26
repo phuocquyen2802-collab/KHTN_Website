@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BrandMark from './BrandMark';
+import GameCharacter from './GameCharacters';
 import { APP_NAME } from '../config/brand';
 import { usePreferences } from '../context/PreferencesContext';
 import { LOGIN_TEXT, TAGLINE } from '../i18n/publicText';
@@ -125,11 +126,19 @@ export default function AuthLayout({ back, children }) {
       </section>
 
       <main className="auth-form-side">
-        <div className="auth-card">
-          <div className="auth-card-top">
-            {back}
+        <div className="auth-card-wrap">
+          {/* 3 linh vật thò đầu lên mép trên khung đăng nhập, vẫy tay chào */}
+          <div className="auth-peek" aria-hidden="true">
+            <GameCharacter id="pi" mood="happy" size={76} decorative />
+            <GameCharacter id="log" mood="happy" size={86} decorative />
+            <GameCharacter id="vector" mood="happy" size={76} decorative />
           </div>
-          {children}
+          <div className="auth-card">
+            <div className="auth-card-top">
+              {back}
+            </div>
+            {children}
+          </div>
         </div>
       </main>
     </div>

@@ -5,8 +5,11 @@ import CountUp from '../components/CountUp';
 import useAutoRefresh, { setIfChanged } from '../hooks/useAutoRefresh';
 import AnswerKeyPanel from '../components/AnswerKeyPanel';
 import UiIcon, { scoreLevel, formatScore } from '../components/UiIcon';
+import { BuddyGreeting } from '../components/Buddy';
+import { useAuth } from '../context/AuthContext';
 
 export default function StudentDashboard() {
+  const { user } = useAuth();
   const [exams, setExams] = useState([]);
   const [submissions, setSubmissions] = useState([]);
   const [roadmaps, setRoadmaps] = useState([]);
@@ -51,6 +54,7 @@ export default function StudentDashboard() {
     }
   });
   const topLevelExams = exams.filter((exam) => !exam.sourceExamId || !examIds.has(exam.sourceExamId));
+  const firstPending = topLevelExams.find((e) => !isSubmitted(e.id)) || exams.find((e) => !isSubmitted(e.id));
 
   return (
     <div className="container">
@@ -60,6 +64,14 @@ export default function StudentDashboard() {
           <p className="page-subtitle">Làm các đề giáo viên giao, xem kết quả và lộ trình ôn tập của bạn.</p>
         </div>
       </div>
+
+      <BuddyGreeting
+        user={user}
+        loading={loading}
+        total={exams.length}
+        pending={pendingCount}
+        firstPendingExamId={firstPending?.id}
+      />
 
       <div className="metrics-grid">
         <div className="metric-card">

@@ -188,8 +188,85 @@ ngay bằng tài khoản mẫu trong README.md.
   bằng tài khoản `nguyenkimchi` (tên hiển thị "Nguyễn Kim Chi")
 - [x] Bước 41 (khẩu hiệu): Đổi khẩu hiệu thành "Nền tảng học tập thông minh,
   kết hợp AI và đánh giá năng lực"
+- [x] Bước 42 (giao diện dễ thương cho THCS): Làm lại giao diện theo ý tưởng
+  "sổ thí nghiệm dán sticker" - chữ tròn Baloo 2, nút kiểu viên kẹo, bo góc
+  lớn, và 6 linh vật khoa học trở thành "bạn đồng hành" của từng học sinh
 
 ## Lịch sử cập nhật
+
+### 2026-11-26 - Giao diện dễ thương hơn cho học sinh THCS (Bước 42)
+- Đã làm gì:
+  1. **Bộ biến giao diện** (đầu `frontend/src/index.css`, cả sáng lẫn tối):
+     nền giấy kẻ ô xanh tím nhạt (biến mới `--grid`, ô 28px trên `body`),
+     chữ mực tím than `#272a5b`, màu chính xanh quỳ `#4f63f7` (thêm
+     `--primary-press` làm gờ dưới của nút), vàng nắng `#ffb31f`, xanh bạc hà,
+     hồng mâm xôi, tím AI; bo góc lớn hơn (10/14/20/26px); bóng đổ ám màu mực,
+     `--shadow-card` là gờ dưới kiểu sticker. Chế độ tối đổi theo tông "phòng
+     thí nghiệm ban đêm".
+  2. **Chữ**: thêm font **Baloo 2** (tròn, mũm mĩm, có tiếng Việt) qua Google
+     Fonts trong `frontend/index.html`, dùng cho tiêu đề, menu, nút, nhãn, số
+     liệu (`--font-display`). Nội dung câu hỏi vẫn dùng Be Vietnam Pro cho dễ
+     đọc. Đổi quy tắc `* { font-family }` từ gán thẳng font thành `inherit`
+     để chữ trong `<span>` con (menu, nút) nhận đúng font của khối cha.
+  3. **Thành phần chung**: thanh bên (biểu tượng nằm trong ô bo tròn, mục
+     đang mở tô màu chính, viền nét đứt), tiêu đề trang 31px, thẻ và thẻ số
+     liệu viền 2px, tab có nền khi chọn, ô nhập viền 2px bo 12px, nhãn trạng
+     thái chữ tròn. Nút kiểu "viên kẹo": có gờ dưới đậm, rê chuột nhô lên 1px,
+     bấm thì lún xuống (tắt khi máy bật "giảm chuyển động").
+  4. **Ô đáp án** (trang làm bài, trang kết quả, trang xem bài của giáo viên):
+     chữ cái A/B/C/D thành ô tròn giống trò chơi Đường đua Khoa học (bỏ dấu
+     chấm sau chữ cái), đáp án đã chọn tô màu và nổi gờ; nút radio ẩn về hình
+     ảnh nhưng vẫn chọn được bằng bàn phím/trình đọc màn hình, vòng focus chỉ
+     hiện khi dùng bàn phím (`:has(input:focus-visible)`).
+  5. **Bạn đồng hành** (`frontend/src/components/Buddy.jsx`, mới): mỗi học
+     sinh được gắn cố định 1 trong 6 linh vật (chọn theo mã tài khoản):
+     - Khung chào ở đầu trang Luyện đề: linh vật "nói" qua bong bóng thoại
+       "Chào An!" + lời nhắn theo tình trạng (còn đề chưa làm -> nút "Làm đề
+       ngay" mở thẳng đề đầu tiên chưa làm; làm hết -> khen + "Xem kết quả";
+       chưa có đề -> rủ vào trò chơi). Linh vật bật ra 1 lần khi vào trang,
+       vui thì nhảy thêm 1 nhịp.
+     - Ảnh đại diện tròn (phần đầu linh vật) ở thanh bên của học sinh, và ở
+       bảng học sinh, trang chi tiết học sinh, trang Giám sát của giáo viên.
+     - Các trang còn trống của học sinh (Trò chơi chưa có chủ đề, chưa có lộ
+       trình, chưa có kết quả, chưa có lịch sử chơi) hiện linh vật ngồi chờ.
+     - `GameCharacters.jsx` thêm tuỳ chọn `crop` (chỉ lấy phần đầu) và
+       `decorative` (ẩn với trình đọc màn hình).
+  6. **Trang đăng nhập**: khung đăng nhập thành 1 tấm sticker nổi trên giấy kẻ
+     ô, 3 linh vật (Mèo Phân Tử, Cú pH, Robot Vôn Kế) thò đầu lên mép trên vẫy
+     tay. **Trang giới thiệu**: tiêu đề chữ tròn, Cú pH đứng vẫy tay ở góc
+     ảnh minh hoạ.
+  7. Đồng bộ màu mới cho favicon, logo, email đặt lại mật khẩu, pháo giấy
+     chúc mừng, màu thanh trình duyệt (`theme-color`). Thêm bản dịch tiếng Anh
+     cho lời chào (tên học sinh đặt trong thẻ `translate="no"` để không dịch
+     nhầm các tin nhắn chat bắt đầu bằng "Chào").
+- Vì sao làm như vậy: Người dùng muốn giao diện "cute một xíu, hơi chipi" để
+  học sinh lớp 8 hứng thú học. Chọn dồn điểm nhấn vào 1 chỗ là các linh vật có
+  sẵn của trò chơi (đúng chủ đề khoa học, không dùng nhân vật có bản quyền),
+  phần còn lại chỉ mềm mại hơn để giao diện giáo viên vẫn gọn, dễ làm việc.
+  Giữ nguyên bố cục và chức năng các trang - chỉ đổi cách hiển thị.
+- Kiểm tra: chạy 1 bản thử riêng (chép backend + dữ liệu gốc từ git sang thư
+  mục tạm, cổng 5055/5175, không đụng dữ liệu thật), tạo dữ liệu mẫu KHTN 8
+  rồi chụp ảnh bằng Chrome điều khiển tự động: trang giới thiệu, đăng nhập,
+  Luyện đề, Kết quả, Trò chơi, Thông tin chung, làm bài, kết quả bài làm,
+  Quản lý học sinh, Quản lý bài tập, Giám sát - ở chế độ sáng, tối, tiếng
+  Anh và màn hình điện thoại 390px. Build frontend đạt.
+- File nào bị ảnh hưởng: `frontend/index.html`, `frontend/public/favicon.svg`,
+  `frontend/src/index.css`, `frontend/src/components/Buddy.jsx` (mới),
+  `frontend/src/components/GameCharacters.jsx`, `frontend/src/components/Sidebar.jsx`,
+  `frontend/src/components/AuthLayout.jsx`, `frontend/src/components/BrandMark.jsx`,
+  `frontend/src/components/ChatWidget.jsx`, `frontend/src/context/PreferencesContext.jsx`,
+  `frontend/src/i18n/uiEnglish.js`, `frontend/src/utils/confetti.js`,
+  `frontend/src/pages/StudentDashboard.jsx`, `frontend/src/pages/LandingPage.jsx`,
+  `frontend/src/pages/ExamPage.jsx`, `frontend/src/pages/ResultPage.jsx`,
+  `frontend/src/pages/StudentGamesPage.jsx`, `frontend/src/pages/StudentRoadmapsPage.jsx`,
+  `frontend/src/pages/StudentWeakTopicsPage.jsx`, `frontend/src/pages/StudentGameHistoryPage.jsx`,
+  `frontend/src/pages/TeacherDashboard.jsx`, `frontend/src/pages/TeacherStudentDetailPage.jsx`,
+  `frontend/src/pages/TeacherAnalyticsPage.jsx`, `frontend/src/pages/TeacherSubmissionDetailPage.jsx`,
+  `frontend/src/pages/AiAssistantPage.jsx`, `backend/src/services/mailService.js`,
+  `docs/STEP_BY_STEP.md`.
+- Việc cần làm tiếp theo: mở web thật (`npm run dev`) xem lại trên máy và
+  điện thoại của học sinh; nếu muốn đổi màu chủ đạo chỉ cần sửa các biến ở
+  đầu `index.css`.
 
 ### 2026-11-26 - Đổi khẩu hiệu website (Bước 41)
 - Đã làm gì: Đổi khẩu hiệu "Phần mềm học Khoa học tự nhiên 8 cùng AI" thành

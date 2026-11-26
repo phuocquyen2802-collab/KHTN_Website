@@ -713,7 +713,7 @@ export default function TeacherSubmissionDetailPage() {
 
                         return (
                           <div key={opt.key} className={rowClass}>
-                            <span className="option-key">{opt.key}.</span>
+                            <span className="option-key">{opt.key}</span>
                             <span className="option-text" dangerouslySetInnerHTML={{ __html: renderMath(opt.text) }} />
                             {isSelected && (
                               <span className={`option-tag ${isCorrect ? 'is-right' : 'is-wrong'}`}>
@@ -866,7 +866,7 @@ export default function TeacherSubmissionDetailPage() {
                               <div className="option-list">
                                 {(ex.options || []).map((opt) => (
                                   <div key={opt.key} className={`option-row${opt.key === ex.correctAnswer ? ' correct' : ''}`}>
-                                    <span className="option-key">{opt.key}.</span>
+                                    <span className="option-key">{opt.key}</span>
                                     {isEditing ? (
                                       <div className="formula-edit-box" style={{ flex: 1 }}>
                                         <div

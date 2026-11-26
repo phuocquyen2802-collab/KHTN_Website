@@ -9,7 +9,7 @@ import { setUiLanguage } from '../i18n/domTranslator';
 
 const THEME_KEY = 'mi-theme';
 const LANG_KEY = 'mi-lang';
-const THEME_COLOR = { light: '#2952d9', dark: '#0e1525' };
+const THEME_COLOR = { light: '#4f63f7', dark: '#121430' };
 
 function readSetting(key, allowed, fallback) {
   try {

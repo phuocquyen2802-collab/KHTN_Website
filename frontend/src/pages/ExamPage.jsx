@@ -628,7 +628,7 @@ export default function ExamPage() {
                               disabled={locked}
                               onChange={() => selectAnswer(q.id, opt.key)}
                             />
-                            <span className="option-key">{opt.key}.</span>
+                            <span className="option-key">{opt.key}</span>
                             <span className="option-text" dangerouslySetInnerHTML={{ __html: renderMath(opt.text) }} />
                           </label>
                         );

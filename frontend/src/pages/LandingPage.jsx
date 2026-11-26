@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import BrandMark from '../components/BrandMark';
+import GameCharacter from '../components/GameCharacters';
 import UiIcon from '../components/UiIcon';
 import { LanguageSwitch, ThemeSwitch } from '../components/PreferenceSwitches';
 import { renderMath } from '../utils/mathRender';
@@ -64,6 +65,10 @@ function ProductCollage({ text }) {
         <div className="lp-step-label"><UiIcon name="book" size={13} /> {text.stepTheory}</div>
         <div className="lp-step-formula" dangerouslySetInnerHTML={{ __html: formula }} />
         <div className="lp-step-mistake"><UiIcon name="alert" size={13} /> {text.stepMistake}</div>
+      </div>
+
+      <div className="lp-buddy">
+        <GameCharacter id="log" mood="happy" size={112} decorative />
       </div>
 
       <div className="lp-float lp-float-ai">

@@ -6,6 +6,7 @@ import GameCharacter, { CHARACTERS } from '../components/GameCharacters';
 import Celebration from '../components/Celebration';
 import { confirmDialog, toast } from '../components/Notify';
 import { renderMath } from '../utils/mathRender';
+import { EmptyBuddy } from '../components/Buddy';
 
 // Trò chơi "Đường đua Khoa học": chọn chủ đề (ngân hàng đề giáo viên tải lên)
 // và nhân vật; mỗi câu trả lời đúng nhân vật vui vẻ tiến 1 bước về đích, sai
@@ -388,7 +389,7 @@ export default function StudentGamesPage() {
           <div className="notice is-danger"><UiIcon name="alert" size={18} /><div className="notice-body">{loadError}</div></div>
         ) : banks.length === 0 ? (
           <div className="empty-state">
-            <div className="empty-state-icon is-svg"><UiIcon name="folder" size={22} /></div>
+            <EmptyBuddy />
             <div className="empty-state-title">Chưa có chủ đề nào</div>
             <p className="empty-state-desc">Khi giáo viên thêm đề vào ngân hàng đề, các chủ đề sẽ hiện ở đây.</p>
           </div>

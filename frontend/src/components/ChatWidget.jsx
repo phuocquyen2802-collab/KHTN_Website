@@ -632,7 +632,7 @@ export default function ChatWidget() {
                           lineHeight: 1.45,
                           wordBreak: 'break-word',
                           boxShadow: isMe
-                            ? '0 2px 6px rgba(41, 82, 217,0.25)'
+                            ? '0 2px 6px rgba(79, 99, 247, 0.25)'
                             : '0 1px 3px rgba(0,0,0,0.06)',
                           border: isMe ? 'none' : '1px solid var(--line)',
                         }}

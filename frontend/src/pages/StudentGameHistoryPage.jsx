@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../services/api';
 import UiIcon from '../components/UiIcon';
 import GameHistoryPanel from '../components/GameHistory';
+import { EmptyBuddy } from '../components/Buddy';
 
 // Lịch sử chơi "Đường đua Khoa học" của học sinh: mỗi lượt chơi xong được máy
 // chủ tự lưu lại (bỏ dở giữa chừng thì không tính).
@@ -18,7 +19,7 @@ export default function StudentGameHistoryPage() {
 
   const empty = (
     <div className="empty-state">
-      <div className="empty-state-icon is-svg"><UiIcon name="history" size={24} /></div>
+      <EmptyBuddy />
       <div className="empty-state-title">Chưa có lượt chơi nào</div>
       <p className="empty-state-desc">Chơi xong một lượt, kết quả sẽ được lưu ở đây.</p>
       <Link to="/student/games" className="btn" style={{ marginTop: 12 }}>

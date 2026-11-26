@@ -5,6 +5,7 @@ import CountUp from '../components/CountUp';
 import UiIcon from '../components/UiIcon';
 import { confirmDialog, toast } from '../components/Notify';
 import { exportAccountsToXlsx, generatePassword } from '../utils/studentAccountsExport';
+import { BuddyAvatar } from '../components/Buddy';
 
 const EMPTY_STUDENT_FORM = { name: '', email: '', password: '', className: '', recoveryEmail: '' };
 
@@ -371,7 +372,6 @@ export default function TeacherDashboard() {
               <tbody>
                 {filteredStudents.map((s) => {
                   const isEditing = editingId === s.id;
-                  const initial = s.name ? s.name.trim().charAt(0).toUpperCase() : 'H';
 
                   if (isEditing) {
                     return (
@@ -445,7 +445,7 @@ export default function TeacherDashboard() {
                           className="person-link"
                           title="Xem kết quả học tập của học sinh này"
                         >
-                          <span className="avatar" aria-hidden="true">{initial}</span>
+                          <BuddyAvatar userId={s.id} size={34} />
                           <span className="person-name">{s.name}</span>
                         </Link>
                       </td>

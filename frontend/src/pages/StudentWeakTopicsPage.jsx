@@ -7,6 +7,7 @@ import WeakTopicsChart from '../components/WeakTopicsChart';
 import { renderMath } from '../utils/mathRender';
 import RoadmapSteps, { RoadmapSummary } from '../components/RoadmapSteps';
 import UiIcon from '../components/UiIcon';
+import { EmptyBuddy } from '../components/Buddy';
 
 export default function StudentWeakTopicsPage() {
   const [data, setData] = useState(null);
@@ -169,7 +170,7 @@ export default function StudentWeakTopicsPage() {
       {submissions.length === 0 ? (
         <div className="card">
           <div className="empty-state">
-            <div className="empty-state-icon is-svg"><UiIcon name="file" size={24} /></div>
+            <EmptyBuddy />
             <div className="empty-state-title">Bạn chưa nộp bài nào</div>
             <p className="empty-state-desc">Làm một đề trong mục Luyện đề để xem kết quả và lộ trình ôn tập ở đây.</p>
             <Link to="/student" className="btn sm">Đến Luyện đề</Link>

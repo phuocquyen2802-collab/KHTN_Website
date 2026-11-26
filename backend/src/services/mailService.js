@@ -19,16 +19,16 @@ const TIME_ZONE = 'Asia/Ho_Chi_Minh';
 
 // Màu lấy theo giao diện web (frontend/src/index.css, BrandMark.jsx).
 const C = {
-  primary: '#2952d9',
-  primaryLight: '#edf1fd',
-  insight: '#f2a33a',
-  ink: '#15203a',
-  ink2: '#3a4562',
-  muted: '#56627d',
-  faint: '#8b95aa',
-  canvas: '#f4f6fa',
-  subtle: '#f8fafc',
-  line: '#e2e8f0',
+  primary: '#4f63f7',
+  primaryLight: '#eef0ff',
+  insight: '#ffb31f',
+  ink: '#272a5b',
+  ink2: '#3c4070',
+  muted: '#5d6190',
+  faint: '#8d91b8',
+  canvas: '#f3f5ff',
+  subtle: '#f8f9ff',
+  line: '#e5e8fa',
 };
 // Email không tải được web font: dùng font có sẵn, đủ dấu tiếng Việt.
 const FONT = "'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif";
