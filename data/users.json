@@ -1,0 +1,12 @@
+[
+  {
+    "id": "u-teacher-1",
+    "name": "Admin",
+    "email": "admin",
+    "passwordHash": "$2a$10$VDLqMqKh3F62cZBPQo5k4Oz0DixeHYWfGYXQc4amAifNMHb7sM9CC",
+    "role": "teacher",
+    "className": null,
+    "createdAt": "2026-09-01T00:00:00.000Z",
+    "lastActiveAt": "2026-11-15T03:16:08.629Z"
+  }
+]
