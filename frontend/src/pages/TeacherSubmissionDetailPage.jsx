@@ -596,7 +596,7 @@ export default function TeacherSubmissionDetailPage() {
                         type="text"
                         value={step.tag || step.title || ''}
                         onChange={(e) => handleStepChange(idx, 'tag', e.target.value)}
-                        placeholder="Ví dụ: Đạo hàm, Cực trị…"
+                        placeholder="Ví dụ: Áp suất chất lỏng, Phản ứng hoá học…"
                       />
                     </div>
 
@@ -826,7 +826,7 @@ export default function TeacherSubmissionDetailPage() {
 
                                   <div>
                                     <label className="edit-field-label">
-                                      Đề bài <span className="edit-field-hint">(công thức gõ dạng LaTeX, ví dụ $x^2$)</span>
+                                      Đề bài <span className="edit-field-hint">(công thức gõ dạng LaTeX, ví dụ $p = d \cdot h$)</span>
                                     </label>
                                     <div className="formula-edit-box" style={{ minHeight: 60 }}>
                                       <div className="formula-edit-box-preview" style={{ fontSize: 14 }} dangerouslySetInnerHTML={{ __html: renderMath(ex.content) }} />

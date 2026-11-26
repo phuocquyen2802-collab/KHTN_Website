@@ -1,4 +1,4 @@
-// Xem lịch sử chơi trò chơi "Đường đua Toán học".
+// Xem lịch sử chơi trò chơi "Đường đua Khoa học".
 // Học sinh chỉ xem được lịch sử của mình; giáo viên xem của từng học sinh
 // ở trang hồ sơ học sinh. Kết quả được ghi trong lúc chơi - xem
 // services/gameHistoryService.js.

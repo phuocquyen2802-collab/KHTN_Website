@@ -3,7 +3,7 @@
 File `.ttf` / `.otf` đặt trong thư mục này sẽ được cài vào máy chủ khi build
 Docker.
 
-Ảnh công thức Toán trong file Word (MathType/Equation) dùng các font
+Ảnh công thức (Vật lí, Hoá học...) trong file Word (MathType/Equation) dùng các font
 `Times New Roman`, `Symbol`, `MT Extra`, `Euclid`. Máy chủ Linux không có sẵn
 các font này nên LibreOffice dùng font thay thế, và một vài ký hiệu có thể
 hiển thị khác so với khi chạy trên Windows.

@@ -1,4 +1,4 @@
-# MathInsight AI - 1 container chạy cả backend (API) lẫn giao diện đã build.
+# SciInsight AI - 1 container chạy cả backend (API) lẫn giao diện đã build.
 # Backend (backend/src/app.js) tự phục vụ thư mục frontend/dist, nên chỉ
 # cần mở 1 cổng duy nhất.
 

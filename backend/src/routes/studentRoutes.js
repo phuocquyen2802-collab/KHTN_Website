@@ -35,7 +35,7 @@ router.get('/me/weak-topics', getMyWeakTopics);
 router.get('/me/roadmaps', getMyApprovedRoadmaps);
 router.get('/me/groups', listMyGroups);
 
-// Trò chơi "Đường đua Toán học" từ ngân hàng đề
+// Trò chơi "Đường đua Khoa học" từ ngân hàng đề
 router.get('/games/banks', listGameBanks);
 router.post('/games/:bankId/start', startGame);
 router.post('/games/:bankId/check', checkGameAnswer);

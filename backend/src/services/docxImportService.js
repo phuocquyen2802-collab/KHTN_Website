@@ -1,7 +1,7 @@
 // Đọc file Word (.docx) chứa đề trắc nghiệm và tách thành danh sách câu hỏi
 // nháp để giáo viên kiểm tra/chỉnh sửa trước khi lưu vào đề thi thật.
 //
-// Đặc điểm của đề Toán THPT thường gặp: công thức được chèn bằng Equation
+// Đặc điểm của đề trắc nghiệm (KHTN 8, Toán...) thường gặp: công thức được chèn bằng Equation
 // Editor/MathType cũ, lưu dưới dạng ảnh WMF (trình duyệt không hiển thị
 // được) - cần chuyển sang PNG bằng LibreOffice (wmfConvertService). Ảnh
 // khác (đồ thị, bảng biến thiên) thường là PNG/JPEG, giữ nguyên.

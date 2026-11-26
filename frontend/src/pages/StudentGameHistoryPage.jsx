@@ -4,7 +4,7 @@ import api from '../services/api';
 import UiIcon from '../components/UiIcon';
 import GameHistoryPanel from '../components/GameHistory';
 
-// Lịch sử chơi "Đường đua Toán học" của học sinh: mỗi lượt chơi xong được máy
+// Lịch sử chơi "Đường đua Khoa học" của học sinh: mỗi lượt chơi xong được máy
 // chủ tự lưu lại (bỏ dở giữa chừng thì không tính).
 export default function StudentGameHistoryPage() {
   const [items, setItems] = useState(null);
@@ -38,7 +38,7 @@ export default function StudentGameHistoryPage() {
       <div className="page-header">
         <div>
           <h1 className="page-title">Lịch sử chơi</h1>
-          <p className="page-subtitle">Kết quả các lượt chơi Đường đua Toán học của bạn</p>
+          <p className="page-subtitle">Kết quả các lượt chơi Đường đua Khoa học của bạn</p>
         </div>
       </div>
 

@@ -35,7 +35,7 @@ function buildAttachmentsFromFiles(files) {
   }));
 }
 
-// Nhãn hiển thị đối tượng nhận thông báo, VD "Lớp 12A2" hoặc "Nhóm Ôn thi cấp tốc"
+// Nhãn hiển thị đối tượng nhận thông báo, VD "Lớp 8A2" hoặc "Nhóm Ôn thi cấp tốc"
 function buildAudienceLabel(a) {
   const type = a.audienceType || 'all';
   if (type === 'all') return 'Tất cả';

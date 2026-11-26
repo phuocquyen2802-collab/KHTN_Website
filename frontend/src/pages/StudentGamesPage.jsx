@@ -7,7 +7,7 @@ import Celebration from '../components/Celebration';
 import { confirmDialog, toast } from '../components/Notify';
 import { renderMath } from '../utils/mathRender';
 
-// Trò chơi "Đường đua Toán học": chọn chủ đề (ngân hàng đề giáo viên tải lên)
+// Trò chơi "Đường đua Khoa học": chọn chủ đề (ngân hàng đề giáo viên tải lên)
 // và nhân vật; mỗi câu trả lời đúng nhân vật vui vẻ tiến 1 bước về đích, sai
 // thì buồn và đứng yên. Hết câu hỏi thì tổng kết % quãng đường đã đi.
 // Máy chủ ghi từng câu trả lời vào phiên chơi (sessionId) và tự lưu lượt chơi
@@ -369,7 +369,7 @@ export default function StudentGamesPage() {
       <div className="page-header">
         <div>
           <h1 className="page-title">Trò chơi</h1>
-          <p className="page-subtitle">Đường đua Toán học: trả lời đúng để đưa nhân vật của bạn về đích</p>
+          <p className="page-subtitle">Đường đua Khoa học: trả lời đúng để đưa nhân vật của bạn về đích</p>
         </div>
         <div className="header-actions">
           <Link to="/student/games/history" className="btn secondary">

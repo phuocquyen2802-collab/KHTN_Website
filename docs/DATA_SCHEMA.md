@@ -128,7 +128,7 @@ Khi giáo viên duyệt (`status = 'approved'`), backend sẽ tạo một `exam`
 `exercises` này và gán `assignedTo = [studentId]`, tái sử dụng luồng giao đề
 bình thường thay vì tạo luồng riêng.
 
-## 8. `game_history.json` — Lịch sử chơi trò chơi "Đường đua Toán học"
+## 8. `game_history.json` — Lịch sử chơi trò chơi "Đường đua Khoa học"
 
 Mỗi dòng là 1 lượt chơi đã chơi xong (trả lời hết các câu). Lượt bỏ dở không
 được lưu. Kết quả do máy chủ chấm trong lúc chơi (câu trả lời ĐẦU TIÊN của mỗi

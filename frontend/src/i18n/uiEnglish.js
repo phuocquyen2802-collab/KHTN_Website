@@ -6,7 +6,7 @@
 
 export const EXACT = {
   // ---- Chung ----
-  'Phần mềm học toán cùng AI': 'Learn math with AI',
+  'Phần mềm học Khoa học tự nhiên 8 cùng AI': 'Learn Grade 8 Natural Science with AI',
   'Đang tải…': 'Loading…',
   'Đang tải...': 'Loading...',
   'Đang lưu…': 'Saving…',
@@ -147,7 +147,7 @@ export const EXACT = {
   // ---- Khung chat ----
   'Cảm xúc': 'Smileys',
   'Cử chỉ & Trái tim': 'Gestures & hearts',
-  'Học tập & Toán học': 'Study & math',
+  'Học tập & Khoa học': 'Study & science',
   'NÉN': 'ARCHIVE',
   'VĂN BẢN': 'TEXT',
   'TẬP TIN': 'FILE',
@@ -219,8 +219,8 @@ export const EXACT = {
   'Lỗi khi chat với Gemini:': 'Error chatting with Gemini:',
   'Có lỗi xảy ra khi kết nối tới máy chủ AI. Vui lòng thử lại sau.': 'Could not connect to the AI server. Please try again later.',
   'Trợ lý': 'Assistant',
-  'Hỏi đáp, giải chi tiết từng bước, tra cứu công thức và sinh bài tập tương tự':
-    'Ask questions, get step-by-step solutions, look up formulas and generate similar exercises',
+  'Hỏi đáp Vật lí, Hoá học, Sinh học, giải chi tiết từng bước, tra cứu công thức và sinh bài tập tương tự':
+    'Ask about physics, chemistry and biology, get step-by-step solutions, look up formulas and generate similar exercises',
   'Xem lịch sử các đoạn chat trước đó': 'View previous chats',
   'Bắt đầu phiên hỏi đáp mới': 'Start a new chat',
   'Lịch sử đoạn chat': 'Chat history',
@@ -232,7 +232,7 @@ export const EXACT = {
   'Sao chép': 'Copy',
   'Xóa tin nhắn này': 'Delete this message',
   'Sao chép nội dung câu trả lời': 'Copy the answer',
-  'Gemini đang suy nghĩ và tính toán bước giải...': 'Gemini is thinking through the solution...',
+  'Gemini đang suy nghĩ và soạn lời giải...': 'Gemini is thinking through the solution...',
   'Vui lòng nhập câu hỏi...': 'Type your question...',
   'Nhấn': 'Press',
   'để gửi,': 'to send,',
@@ -284,8 +284,8 @@ export const EXACT = {
   'Viết bình luận': 'Write a comment',
 
   // ---- Trang đề thi (giáo viên) ----
-  '⚠️ Vui lòng chọn file Word (.docx) để hệ thống nhận diện câu hỏi và công thức toán.':
-    '⚠️ Please choose a Word file (.docx) so the system can detect the questions and math formulas.',
+  '⚠️ Vui lòng chọn file Word (.docx) để hệ thống nhận diện câu hỏi và công thức.':
+    '⚠️ Please choose a Word file (.docx) so the system can detect the questions and formulas.',
   '⚠️ Lỗi khi đọc file Word:': '⚠️ Error reading the Word file:',
   '⚠️ Nạp câu hỏi thất bại:': '⚠️ Could not add the questions:',
   'Xoá câu hỏi này khỏi đề thi?': 'Remove this question from the test?',
@@ -705,7 +705,7 @@ export const EXACT = {
   'Tải file Word đề thi, kiểm tra câu hỏi rồi giao cho học sinh.': 'Upload the Word test file, check the questions and assign it to students.',
   'Đóng form tạo đề': 'Close the new test form',
   'Tải đề thi lên': 'Upload the test',
-  'File Word (.docx) có câu hỏi trắc nghiệm, công thức Toán được giữ nguyên.': 'A Word file (.docx) with multiple-choice questions; math formulas are kept as they are.',
+  'File Word (.docx) có câu hỏi trắc nghiệm, công thức Vật lí, Hoá học được giữ nguyên.': 'A Word file (.docx) with multiple-choice questions; physics and chemistry formulas are kept as they are.',
   'Đang xử lí': 'Processing',
   'Đề có nhiều công thức sẽ mất thêm thời gian để dựng ảnh công thức.': 'Tests with many formulas take longer to render.',
   'File đề thi': 'Test file',
@@ -842,7 +842,7 @@ export const EXACT = {
   'Bước': 'Step',
   'Xoá bước này': 'Delete this step',
   'Tên chuyên đề': 'Topic name',
-  'Ví dụ: Đạo hàm, Cực trị…': 'e.g. Derivatives, Extrema…',
+  'Ví dụ: Áp suất chất lỏng, Phản ứng hoá học…': 'e.g. Liquid pressure, Chemical reactions…',
   'Tóm tắt công thức trọng tâm…': 'Summary of key formulas…',
   'Các bẫy hoặc lỗi học sinh hay mắc…': 'Traps or common student mistakes…',
   'Việc cụ thể học sinh cần làm…': 'Concrete actions for the student…',
@@ -857,7 +857,7 @@ export const EXACT = {
   'Thêm câu': 'Add question',
   'Xoá câu này': 'Delete question',
   'Đề bài': 'Question',
-  '(công thức gõ dạng LaTeX, ví dụ $x^2$)': '(type formulas in LaTeX, e.g. $x^2$)',
+  '(công thức gõ dạng LaTeX, ví dụ $p = d \\cdot h$)': '(type formulas in LaTeX, e.g. $p = d \\cdot h$)',
   'Chuyên đề ôn tập mới': 'New review topic',
   'Thêm chuyên đề bài tập': 'Add exercise topic',
   'Duyệt và gửi cho học sinh': 'Approve and send to student',
@@ -883,14 +883,14 @@ export const EXACT = {
 
   // ---- Ngân hàng đề (giáo viên) ----
   'Ngân hàng đề': 'Question bank',
-  'Tải đề Word theo từng chủ đề để học sinh luyện tập qua trò chơi Đường đua Toán học':
-    'Upload Word tests by topic so students can practise in the Math Race game',
+  'Tải đề Word theo từng chủ đề để học sinh luyện tập qua trò chơi Đường đua Khoa học':
+    'Upload Word tests by topic so students can practise in the Science Race game',
   'Tải đề lên ngân hàng': 'Upload to the bank',
   'Mỗi file Word là một chủ đề. Chỉ những câu có đủ 4 đáp án A, B, C, D và có trong bảng đáp án mới được đưa vào trò chơi.':
     'Each Word file is one topic. Only questions with all 4 options A, B, C, D and an entry in the answer table are used in the game.',
   'Kéo thả một hoặc nhiều file Word vào đây': 'Drag and drop one or more Word files here',
   '(.docx)': '(.docx)',
-  'Tên chủ đề, VD: Cấp số cộng': 'Topic name, e.g. Arithmetic sequences',
+  'Tên chủ đề, VD: Lực đẩy Archimedes': 'Topic name, e.g. Buoyant force (Archimedes)',
   'Đang xử lý…': 'Processing…',
   'Nhập tên chủ đề': 'Enter a topic name',
   'Tải lên thất bại': 'Upload failed',
@@ -931,7 +931,7 @@ export const EXACT = {
 
   // ---- Trò chơi (học sinh) ----
   'Trò chơi': 'Games',
-  'Đường đua Toán học: trả lời đúng để đưa nhân vật của bạn về đích': 'Math Race: answer correctly to get your character to the finish line',
+  'Đường đua Khoa học: trả lời đúng để đưa nhân vật của bạn về đích': 'Science Race: answer correctly to get your character to the finish line',
   'Chọn chủ đề': 'Choose a topic',
   'Chọn nhân vật': 'Choose a character',
   'Khi giáo viên thêm đề vào ngân hàng đề, các chủ đề sẽ hiện ở đây.': 'Topics appear here once your teacher adds tests to the question bank.',
@@ -980,8 +980,8 @@ export const EXACT = {
   'Quay lại Trò chơi': 'Back to Games',
   'Quay lại Lịch sử chơi': 'Back to game history',
   'Quay lại hồ sơ học sinh': 'Back to student profile',
-  'Kết quả các lượt chơi Đường đua Toán học của bạn': 'Results of your Math Race rounds',
-  'Các lượt chơi Đường đua Toán học học sinh đã chơi xong.': 'Math Race rounds this student has finished.',
+  'Kết quả các lượt chơi Đường đua Khoa học của bạn': 'Results of your Science Race rounds',
+  'Các lượt chơi Đường đua Khoa học học sinh đã chơi xong.': 'Science Race rounds this student has finished.',
   'Không tải được lịch sử chơi': 'Could not load the game history',
   'Đang tải lịch sử chơi…': 'Loading game history…',
   'Chưa có lượt chơi nào': 'No rounds played yet',
@@ -1031,18 +1031,18 @@ export const EXACT = {
   'Kết quả sẽ không được tính và không lưu vào lịch sử chơi.': 'The result will not count and will not be saved to your game history.',
   'Học sinh sẽ không xem được file đáp án chi tiết của đề thi này nữa.': 'Students will no longer be able to see the detailed answer file of this test.',
   'Xoá câu hỏi thất bại': 'Could not delete the question',
-  'Mèo Pi': 'Pi the Cat',
-  'Gấu Sigma': 'Sigma the Bear',
-  'Thỏ Delta': 'Delta the Bunny',
-  'Cú Logarit': 'Logarithm the Owl',
-  'Robot Vectơ': 'Vector the Robot',
-  'Khủng long Hàm số': 'Function the Dino',
-  'Lanh lợi, mê lượng giác': 'Clever, loves trigonometry',
-  'Chậm mà chắc, giỏi tính tổng': 'Slow and steady, great at sums',
-  'Nhanh nhẹn, thích biến thiên': 'Quick, loves change',
-  'Thông thái, nhìn xa trông rộng': 'Wise and far-sighted',
-  'Luôn đúng hướng, đúng độ dài': 'Always the right direction and length',
-  'Mạnh mẽ, đạo hàm siêu tốc': 'Strong, super-fast derivatives',
+  'Mèo Phân Tử': 'Molecule the Cat',
+  'Gấu Archimedes': 'Archimedes the Bear',
+  'Thỏ Nhiệt Độ': 'Thermo the Bunny',
+  'Cú pH': 'pH the Owl',
+  'Robot Vôn Kế': 'Voltmeter the Robot',
+  'Khủng long Sinh Thái': 'Eco the Dino',
+  'Lanh lợi, mê phản ứng hoá học': 'Clever, loves chemical reactions',
+  'Chậm mà chắc, nổi nhờ lực đẩy': 'Slow and steady, floats on buoyancy',
+  'Nhanh nhẹn, truyền nhiệt siêu tốc': 'Quick, a super-fast heat conductor',
+  'Thông thái, phân biệt acid và base': 'Wise, tells acids from bases',
+  'Đo đâu chuẩn đó, đúng hiệu điện thế': 'Measures every voltage just right',
+  'Mạnh mẽ, yêu thiên nhiên và môi trường': 'Strong, loves nature and the environment',
 
   // ---- Thông báo lỗi từ máy chủ ----
   'Bạn chỉ có thể sửa bình luận do chính mình viết': 'You can only edit your own comments',

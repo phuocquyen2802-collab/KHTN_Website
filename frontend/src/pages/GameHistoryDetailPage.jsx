@@ -8,7 +8,7 @@ import {
 } from '../components/GameHistory';
 import { renderMath } from '../utils/mathRender';
 
-// Xem lại 1 lượt chơi "Đường đua Toán học": kết quả + từng câu đã trả lời.
+// Xem lại 1 lượt chơi "Đường đua Khoa học": kết quả + từng câu đã trả lời.
 // Học sinh: /student/games/history/:historyId
 // Giáo viên: /teacher/students/:studentId/games/:historyId
 const FILTERS = [

@@ -245,7 +245,7 @@ export default function TeacherStudentDetailPage() {
         )}
       </div>
 
-      {/* Lịch sử chơi trò chơi Đường đua Toán học */}
+      {/* Lịch sử chơi trò chơi Đường đua Khoa học */}
       <div className="card">
         <div className="card-header">
           <div className="card-title-group">
@@ -254,7 +254,7 @@ export default function TeacherStudentDetailPage() {
               <h2>Lịch sử trò chơi</h2>
               <span className="count-badge">{gameHistory ? gameHistory.length : 0}</span>
             </div>
-            <p className="card-hint">Các lượt chơi Đường đua Toán học học sinh đã chơi xong.</p>
+            <p className="card-hint">Các lượt chơi Đường đua Khoa học học sinh đã chơi xong.</p>
           </div>
         </div>
 

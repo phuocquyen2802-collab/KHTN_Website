@@ -1,4 +1,4 @@
-// Ngân hàng đề & trò chơi "Đường đua Toán học".
+// Ngân hàng đề & trò chơi "Đường đua Khoa học".
 //
 // Giáo viên tải lên nhiều file Word, mỗi file là 1 ngân hàng đề có tên chủ đề.
 // Câu hỏi được bóc tách bằng đúng bộ nhập Word của phần tạo đề thi

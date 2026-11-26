@@ -723,7 +723,7 @@ export default function TeacherDashboard() {
                   <input
                     id="add-student-class"
                     type="text"
-                    placeholder="11A3…"
+                    placeholder="8A3…"
                     value={newStudent.className}
                     onChange={(e) => setNewStudent({ ...newStudent, className: e.target.value })}
                     autoComplete="off"

@@ -1,14 +1,14 @@
-// Nhân vật của trò chơi "Đường đua Toán học" - bộ linh vật riêng của
-// MathInsight AI (vẽ bằng SVG, không dùng nhân vật có bản quyền). Mỗi nhân vật
+// Nhân vật của trò chơi "Đường đua Khoa học" - bộ linh vật riêng của
+// SciInsight AI (vẽ bằng SVG, không dùng nhân vật có bản quyền). Mỗi nhân vật
 // có 3 biểu cảm: neutral (bình thường), happy (trả lời đúng), sad (trả lời sai).
 
 export const CHARACTERS = [
-  { id: 'pi', name: 'Mèo Pi', motto: 'Lanh lợi, mê lượng giác', main: '#f6a04d', belly: '#ffe3c2', dark: '#c9721f', symbol: 'π' },
-  { id: 'sigma', name: 'Gấu Sigma', motto: 'Chậm mà chắc, giỏi tính tổng', main: '#b07a52', belly: '#f1d9bf', dark: '#7f5233', symbol: 'Σ' },
-  { id: 'delta', name: 'Thỏ Delta', motto: 'Nhanh nhẹn, thích biến thiên', main: '#f4eef9', belly: '#ffffff', dark: '#b9a5cf', symbol: 'Δ' },
-  { id: 'log', name: 'Cú Logarit', motto: 'Thông thái, nhìn xa trông rộng', main: '#7c6cf2', belly: '#e5e0ff', dark: '#4f3fc8', symbol: 'log' },
-  { id: 'vector', name: 'Robot Vectơ', motto: 'Luôn đúng hướng, đúng độ dài', main: '#3bb3a6', belly: '#d7f5f0', dark: '#21857a', symbol: '→' },
-  { id: 'func', name: 'Khủng long Hàm số', motto: 'Mạnh mẽ, đạo hàm siêu tốc', main: '#5cc46a', belly: '#dff7d9', dark: '#36924a', symbol: 'f(x)' },
+  { id: 'pi', name: 'Mèo Phân Tử', motto: 'Lanh lợi, mê phản ứng hoá học', main: '#f6a04d', belly: '#ffe3c2', dark: '#c9721f', symbol: 'H₂O' },
+  { id: 'sigma', name: 'Gấu Archimedes', motto: 'Chậm mà chắc, nổi nhờ lực đẩy', main: '#b07a52', belly: '#f1d9bf', dark: '#7f5233', symbol: 'FA' },
+  { id: 'delta', name: 'Thỏ Nhiệt Độ', motto: 'Nhanh nhẹn, truyền nhiệt siêu tốc', main: '#f4eef9', belly: '#ffffff', dark: '#b9a5cf', symbol: '°C' },
+  { id: 'log', name: 'Cú pH', motto: 'Thông thái, phân biệt acid và base', main: '#7c6cf2', belly: '#e5e0ff', dark: '#4f3fc8', symbol: 'pH' },
+  { id: 'vector', name: 'Robot Vôn Kế', motto: 'Đo đâu chuẩn đó, đúng hiệu điện thế', main: '#3bb3a6', belly: '#d7f5f0', dark: '#21857a', symbol: 'V' },
+  { id: 'func', name: 'Khủng long Sinh Thái', motto: 'Mạnh mẽ, yêu thiên nhiên và môi trường', main: '#5cc46a', belly: '#dff7d9', dark: '#36924a', symbol: 'O₂' },
 ];
 
 const INK = '#1f2433';
@@ -202,7 +202,6 @@ export default function GameCharacter({ id, mood = 'neutral', size = 96, classNa
         textAnchor="middle"
         fontSize={fontSize}
         fontWeight="700"
-        fontStyle="italic"
         fontFamily="Georgia, 'Times New Roman', serif"
         fill={c.dark}
       >

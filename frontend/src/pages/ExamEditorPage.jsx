@@ -155,7 +155,7 @@ export default function ExamEditorPage() {
         setImportMessage(`✓ Đã phân tích thành công ${mapped.length} câu hỏi từ file Word! Hãy kiểm tra chủ đề và đáp án bên dưới trước khi lưu.`);
         setUploadProgress(100);
       } else {
-        setImportMessage('⚠️ Vui lòng chọn file Word (.docx) để hệ thống nhận diện câu hỏi và công thức toán.');
+        setImportMessage('⚠️ Vui lòng chọn file Word (.docx) để hệ thống nhận diện câu hỏi và công thức.');
       }
     } catch (err) {
       setImportMessage(`⚠️ Lỗi khi đọc file Word: ` + (err.response?.data?.message || err.message));

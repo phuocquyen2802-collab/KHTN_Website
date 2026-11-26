@@ -18,7 +18,7 @@ function validMessages(messages) {
 }
 
 // POST /api/ai/chat
-// Trao đổi trực tiếp với Gemini AI về các chủ đề Toán học (chờ đủ câu trả lời)
+// Trao đổi trực tiếp với Gemini AI về các chủ đề Khoa học tự nhiên 8 (chờ đủ câu trả lời)
 router.post('/chat', verifyToken, async (req, res) => {
   try {
     const { messages = [] } = req.body;

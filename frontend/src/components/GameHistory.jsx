@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import UiIcon, { scoreLevel } from './UiIcon';
 import GameCharacter, { CHARACTERS } from './GameCharacters';
 
-// Lịch sử chơi "Đường đua Toán học": thống kê + danh sách các lượt chơi.
+// Lịch sử chơi "Đường đua Khoa học": thống kê + danh sách các lượt chơi.
 // Dùng ở trang Lịch sử chơi của học sinh và hồ sơ học sinh của giáo viên.
 
 const PAGE_SIZE = 10;

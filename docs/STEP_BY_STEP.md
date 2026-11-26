@@ -2,7 +2,8 @@
 
 ## Mục tiêu dự án
 
-Website hỗ trợ đánh giá chất lượng bài làm trắc nghiệm của học sinh khối 12,
+Website hỗ trợ đánh giá chất lượng bài làm trắc nghiệm môn Khoa học tự nhiên
+của học sinh lớp 8 (trước đây làm cho Toán 12, nhật ký bên dưới giữ nguyên),
 từ đó đưa ra **roadmap ôn tập** và **bài tập tương tự** cho những chủ đề học
 sinh hay sai nhất.
 
@@ -175,8 +176,113 @@ ngay bằng tài khoản mẫu trong README.md.
   nhiều nhất: "Tạo đề thi mới" (`TeacherExamsPage.jsx`, luồng tải file Word
   + xem trước + giao đề gộp chung 1 form). Tách logic chỉnh cỡ dùng chung
   ra `utils/formulaResize.js`, áp dụng y hệt cho cả 2 màn hình
+- [x] Bước 37 (đổi môn học): Chuyển toàn bộ website từ trắc nghiệm Toán 12
+  sang môn Khoa học tự nhiên lớp 8 (Vật lí, Hoá học, Sinh học) - đổi thương
+  hiệu thành SciInsight AI, viết lại prompt AI, nội dung trang giới thiệu/
+  đăng nhập, logo, trò chơi, email và tài liệu
 
 ## Lịch sử cập nhật
+
+### 2026-11-26 - Chuyển website từ Toán 12 sang Khoa học tự nhiên 8 (Bước 37)
+- Đã làm gì: Sửa toàn bộ chữ và nội dung đang nói về Toán sang môn Khoa
+  học tự nhiên lớp 8 (chương trình GDPT 2018), cụ thể:
+  1. **Thương hiệu**: đổi tên "MathInsight AI - Phần mềm học toán cùng AI"
+     thành "SciInsight AI - Phần mềm học Khoa học tự nhiên 8 cùng AI" (sửa 1
+     chỗ ở `frontend/src/config/brand.js`, cộng thẻ `<title>` và mô tả trong
+     `frontend/index.html`).
+  2. **Logo + favicon**: thay đồ thị hàm bậc ba bằng hình bình tam giác
+     (bình Erlenmeyer) của phòng thí nghiệm, bọt khí màu hổ phách vẫn tượng
+     trưng cho "insight" như logo cũ.
+  3. **Trang giới thiệu và trang đăng nhập** (cả tiếng Việt và tiếng Anh):
+     tiêu đề, mô tả tính năng, ví dụ chủ đề yếu ("Tính theo phương trình hoá
+     học", "Dung dịch và nồng độ", "Lực đẩy Archimedes" với công thức
+     $F_A = d \cdot V$). Hình minh hoạ trang đăng nhập đổi từ đồ thị y = sin x
+     sang đồ thị thể tích khí oxygen theo thời gian khi phân huỷ
+     $\mathrm{H_2O_2}$, so sánh có và không có chất xúc tác $\mathrm{MnO_2}$
+     (Bài Tốc độ phản ứng và chất xúc tác - KHTN 8).
+  4. **Prompt AI sinh lộ trình** (`geminiService.js`, hàm `buildPrompt`): AI
+     đóng vai giáo viên KHTN 8; dùng tên chất theo danh pháp IUPAC như SGK
+     hiện hành (oxygen, hydrogen, hydrochloric acid, sodium hydroxide...);
+     thể tích mol khí ở điều kiện chuẩn (25 °C, 1 bar) là 24,79 lít; ví dụ
+     JSON mẫu đổi sang bài tập Hoá/Lí/Sinh (tính số mol, áp suất chất lỏng,
+     tính theo phương trình hoá học, hệ tuần hoàn); hướng dẫn viết công thức
+     hoá học bằng `\mathrm{...}` và điều kiện phản ứng bằng `\xrightarrow{...}`
+     (KaTeX hiển thị được sẵn, không cần thêm thư viện mhchem); không đặt chữ
+     tiếng Việt có dấu bên trong `$...$`. Bỏ 5 loại hình vẽ Toán (đồ thị hàm
+     số, bảng biến thiên, hình chóp/lăng trụ, hệ trục Oxyz, khối tròn xoay)
+     khỏi prompt - AI mô tả mạch điện, dụng cụ thí nghiệm, chuỗi thức ăn...
+     bằng lời. Đã chạy thử hàm `buildPrompt` và kiểm tra phần JSON mẫu trong
+     prompt vẫn parse được.
+  5. **Prompt Trợ lý AI** (`buildChatContents`): liệt kê đủ nội dung KHTN 8
+     theo 3 mạch Hoá học / Vật lí / Sinh học, thay mẹo bấm máy tính Casio
+     bằng giải thích hiện tượng, thí nghiệm, an toàn phòng thí nghiệm; ví dụ
+     cú pháp LaTeX đổi sang công thức Lí, Hoá. Lời chào ở trang Trợ lý AI
+     (`AiAssistantPage.jsx`) cũng đổi theo.
+  6. **Trò chơi**: "Đường đua Toán học" đổi thành "Đường đua Khoa học" ở mọi
+     trang và comment. 6 nhân vật đổi tên, khẩu hiệu, ký hiệu: Mèo Phân Tử
+     (H₂O), Gấu Archimedes (FA), Thỏ Nhiệt Độ (°C), Cú pH (pH), Robot Vôn Kế
+     (V), Khủng long Sinh Thái (O₂). Giữ nguyên `id` nhân vật vì lịch sử chơi
+     chỉ lưu `characterId` - lượt chơi cũ vẫn hiện đúng nhân vật.
+  7. **Email đặt lại mật khẩu** (`mailService.js`): tên thương hiệu, khẩu
+     hiệu, chữ cái logo "M" đổi thành "S"; `EMAIL_FROM` mẫu trong
+     `backend/.env.example` đổi tên hiển thị.
+  8. **Chữ giao diện khác**: nhóm emoji "Học tập & Khoa học" trong khung
+     chat (thêm 🔬 🧪 ⚗️ 🧲 ⚡...), ô gợi ý tên chủ đề ("Lực đẩy Archimedes",
+     "Áp suất chất lỏng, Phản ứng hoá học…"), gợi ý tên lớp "8A3…", gợi ý
+     LaTeX "$p = d \cdot h$", mô tả tải đề Word "công thức Vật lí, Hoá học".
+     Mọi câu tiếng Việt bị đổi đều cập nhật khoá tương ứng trong
+     `i18n/uiEnglish.js` để chế độ tiếng Anh vẫn dịch được.
+  9. **Tài liệu**: README, `docs/DATA_SCHEMA.md`, `docs/DEPLOY_DOCKER.md`,
+     `docs/Document.html`, `docs/dinhdang.html`, `docker/fonts/README.md`,
+     comment đầu `Dockerfile`, phần "Mục tiêu dự án" ở đầu file nhật ký này.
+- Vì sao làm như vậy: Đề tài KHKT chuyển sang môn Khoa học tự nhiên lớp 8,
+  nên mọi chữ học sinh/giáo viên nhìn thấy và mọi nội dung AI sinh ra phải
+  đúng môn, đúng chương trình lớp 8. Prompt AI là phần quan trọng nhất vì
+  quyết định chất lượng lộ trình ôn tập và bài tập tương tự. Một số thứ CỐ Ý
+  GIỮ NGUYÊN để không làm hỏng dữ liệu:
+  - Chuỗi `mathinsight-student-password:` trong `utils/passwordVault.js` là
+    khoá mã hoá mật khẩu học sinh - đổi sẽ không giải mã được mật khẩu đã lưu.
+  - Tên project/container/volume Docker (`mathinsight`, `mathinsight-data`)
+    trong `docker-compose.yml` - đổi tên volume sẽ làm server tạo volume mới
+    rỗng, coi như mất dữ liệu.
+  - Tên thư mục tạm, tên file font trong Docker, khoá `localStorage`
+    (`mi-theme`...) - chỉ là định danh kỹ thuật, người dùng không thấy.
+  - Code vẽ hình Toán (`QuestionDiagram`, `FunctionGraphChart`,
+    `OxyzDiagram`...) vẫn còn để hiển thị dữ liệu cũ nếu có; AI không tạo
+    các hình này nữa.
+  - Từ "chuyên đề" trên giao diện vẫn đúng với môn KHTN nên không đổi.
+  - Các mục nhật ký cũ bên dưới (Bước 1-36) giữ nguyên vì là lịch sử thật
+    của dự án khi còn làm cho môn Toán.
+- Kiểm tra: kiểm tra cú pháp toàn bộ file frontend đã sửa bằng esbuild và
+  file backend bằng `node --check` (đều đạt); chụp ảnh xem trước logo mới và
+  hình minh hoạ trang đăng nhập bằng Chrome headless (rõ, không chồng chữ).
+  CHƯA chạy thử cả website (máy chưa `npm install`) và CHƯA gọi Gemini thật
+  với prompt mới (chưa có API key trong phiên làm việc này).
+- File nào bị ảnh hưởng: `frontend/src/config/brand.js`, `frontend/index.html`,
+  `frontend/public/favicon.svg`, `frontend/src/components/BrandMark.jsx`,
+  `frontend/src/components/AuthLayout.jsx`, `frontend/src/index.css`,
+  `frontend/src/i18n/publicText.js`, `frontend/src/i18n/uiEnglish.js`,
+  `frontend/src/pages/LandingPage.jsx`, `frontend/src/pages/AiAssistantPage.jsx`,
+  `frontend/src/components/GameCharacters.jsx`, `frontend/src/components/GameHistory.jsx`,
+  `frontend/src/components/ChatWidget.jsx`, `frontend/src/pages/StudentGamesPage.jsx`,
+  `frontend/src/pages/StudentGameHistoryPage.jsx`, `frontend/src/pages/GameHistoryDetailPage.jsx`,
+  `frontend/src/pages/TeacherQuestionBanksPage.jsx`, `frontend/src/pages/TeacherStudentDetailPage.jsx`,
+  `frontend/src/pages/TeacherSubmissionDetailPage.jsx`, `frontend/src/pages/TeacherDashboard.jsx`,
+  `frontend/src/pages/TeacherExamsPage.jsx`, `frontend/src/pages/ExamEditorPage.jsx`,
+  `backend/src/services/geminiService.js`, `backend/src/services/mailService.js`,
+  `backend/src/services/gameHistoryService.js`, `backend/src/services/docxImportService.js`,
+  `backend/src/controllers/questionBankController.js`, `backend/src/controllers/gameHistoryController.js`,
+  `backend/src/controllers/announcementController.js`, `backend/src/routes/ai.js`,
+  `backend/src/routes/studentRoutes.js`, `backend/.env.example`, `Dockerfile`,
+  `README.md`, `docs/*`, `docker/fonts/README.md`.
+- Việc cần làm tiếp theo:
+  1. Chạy `npm install` + `npm run dev` ở cả `backend` và `frontend`, xem lại
+     trang giới thiệu, đăng nhập, trò chơi.
+  2. Đặt `GEMINI_API_KEY` thật, làm thử 1 đề KHTN 8 rồi sinh lộ trình AI để
+     kiểm tra chất lượng bài tập tương tự (đáp án đúng, công thức hoá học
+     hiển thị đúng).
+  3. Nếu có tên miền mới cho website KHTN, sửa `APP_URL` và tên miền trong
+     `EMAIL_FROM` ở `backend/.env`.
 
 ### 2026-09-09 - Thêm chỉnh cỡ công thức vào đúng màn hình "Tạo đề thi mới" (Bước 36)
 - Đã làm gì: Người dùng gửi ảnh chụp chỉ rõ: màn hình họ đang dùng để tạo đề

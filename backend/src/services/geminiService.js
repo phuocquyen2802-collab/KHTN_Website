@@ -103,14 +103,11 @@ function buildPrompt(studentName, weakTags = [], wrongQuestions = [], images = n
         const optionsText = (q.options || [])
           .map((opt) => `    ${opt.key}. ${questionText(opt.text, images)}`)
           .join('\n');
-        const diagramLine = q.diagram
-          ? `\n- Hình minh hoạ gốc (dữ liệu CHÍNH XÁC, dùng làm mẫu để vẽ hình tương tự): ${JSON.stringify(q.diagram)}`
-          : '';
-        return `[Câu sai ${idx + 1}] (Chuyên đề: ${(q.tags || []).join(', ') || 'Toán 11'})
+        return `[Câu sai ${idx + 1}] (Chủ đề: ${(q.tags || []).join(', ') || 'Khoa học tự nhiên 8'})
 - Đề bài gốc: ${cleanContent}
 - 4 đáp án gốc:
 ${optionsText}
-- Đáp án đúng: ${q.correctAnswer || 'A'} | Học sinh đã chọn sai: ${q.selectedOption || 'Chưa chọn'}${diagramLine}`;
+- Đáp án đúng: ${q.correctAnswer || 'A'} | Học sinh đã chọn sai: ${q.selectedOption || 'Chưa chọn'}`;
       })
       .join('\n\n');
 
@@ -128,125 +125,103 @@ ${list}\n`;
 
   const wantQuestionAnalyses = wrongQuestions && wrongQuestions.length > 0;
 
-  return `Bạn là một giáo viên Toán lớp 11 tại Việt Nam, dạy theo chương trình Giáo dục phổ thông 2018. Lý thuyết, công thức, cách giải và bài tập tương tự bám sát phạm vi kiến thức Toán 11; chỉ dùng kiến thức lớp trên khi chính câu hỏi học sinh làm sai thuộc phần đó. Bạn đang phân tích bài làm của học sinh "${studentName}" để:
-1. Viết một Lộ trình ôn tập tự học chi tiết, chuẩn mực, công thức Toán học chuẩn LaTeX 100%.
+  return `Bạn là một giáo viên môn Khoa học tự nhiên lớp 8 tại Việt Nam, dạy theo chương trình Giáo dục phổ thông 2018 (gồm các mạch nội dung: Chất và sự biến đổi của chất - Hoá học; Năng lượng và sự biến đổi - Vật lí; Vật sống - Sinh học). Lý thuyết, công thức, cách giải và bài tập tương tự bám sát phạm vi kiến thức Khoa học tự nhiên 8; chỉ dùng kiến thức lớp trên khi chính câu hỏi học sinh làm sai thuộc phần đó. Dùng tên chất theo danh pháp IUPAC như sách giáo khoa hiện hành (oxygen, hydrogen, nitrogen, hydrochloric acid, sulfuric acid, sodium hydroxide...) và thể tích mol chất khí ở điều kiện chuẩn (25 °C, 1 bar) là 24,79 lít. Bạn đang phân tích bài làm của học sinh "${studentName}" để:
+1. Viết một Lộ trình ôn tập tự học chi tiết, chuẩn mực, công thức Vật lí, công thức và phương trình Hoá học viết chuẩn LaTeX 100%.
 2. ${wantQuestionAnalyses ? 'Phân tích RIÊNG TỪNG CÂU học sinh đã làm sai (xem "questionAnalyses" trong cấu trúc JSON bên dưới): chỉ ra LỖ HỔNG KIẾN THỨC cụ thể đứng sau lỗi sai đó (thiếu/nhầm kiến thức nền nào khiến học sinh chọn sai đáp án đã chọn) và CÁCH KHẮC PHỤC lỗ hổng đó (nên ôn lại phần lý thuyết/dạng bài nào, luyện tập theo hướng nào) - KHÔNG giải lại chi tiết từng bước của câu hỏi (lời giải chi tiết đầy đủ đã có sẵn trong file đáp án riêng giáo viên phát cho học sinh).' : ''}
-3. Phân loại và sinh ra BỘ BÀI TẬP TRẮC NGHIỆM TƯƠNG TỰ THEO TỪNG CHUYÊN ĐỀ (mỗi câu học sinh làm sai hoặc mỗi chủ đề yếu sinh đúng ${exerciseCountPerQuestion} câu tương tự cùng dạng) với ĐỀ BÀI ĐẦY ĐỦ CÔNG THỨC / PHƯƠNG TRÌNH TOÁN, TUYỆT ĐỐI KHÔNG CỤT ĐỀ.
+3. Phân loại và sinh ra BỘ BÀI TẬP TRẮC NGHIỆM TƯƠNG TỰ THEO TỪNG CHỦ ĐỀ (mỗi câu học sinh làm sai hoặc mỗi chủ đề yếu sinh đúng ${exerciseCountPerQuestion} câu tương tự cùng dạng) với ĐỀ BÀI ĐẦY ĐỦ DỮ KIỆN (số liệu kèm đơn vị, công thức, phương trình hoá học), TUYỆT ĐỐI KHÔNG CỤT ĐỀ.
 
-CHUYÊN ĐỀ YẾU CỦA HỌC SINH:
+CHỦ ĐỀ YẾU CỦA HỌC SINH:
 ${tagList}
 ${wrongQuestionsSection}
 HÃY TRẢ VỀ DUY NHẤT MỘT OBJECT JSON THEO ĐÚNG CẤU TRÚC SAU (KHÔNG KÈM BẤT KỲ VĂN BẢN NÀO NGOÀI JSON):
 
 {
-  "summary": "Đoạn văn 4-6 câu: Động viên em ${studentName}, nêu rõ từng dạng toán em đang bị hổng và định hướng cách ôn tập từ cơ bản đến nâng cao.",
+  "summary": "Đoạn văn 4-6 câu: Động viên em ${studentName}, nêu rõ từng nội dung/dạng bài em đang bị hổng (Vật lí, Hoá học hay Sinh học) và định hướng cách ôn tập từ cơ bản đến nâng cao.",
   "steps": [
     {
       "order": 1,
-      "tag": "Phương trình lượng giác",
-      "theory": "1. Công thức nghiệm cơ bản:\\n- $\\\\sin x = \\\\sin \\\\alpha \\\\Leftrightarrow x = \\\\alpha + k2\\\\pi$ hoặc $x = \\\\pi - \\\\alpha + k2\\\\pi$ ($k \\\\in \\\\mathbb{Z}$).\\n- $\\\\cos x = \\\\cos \\\\alpha \\\\Leftrightarrow x = \\\\pm \\\\alpha + k2\\\\pi$ ($k \\\\in \\\\mathbb{Z}$).\\n- $\\\\tan x = \\\\tan \\\\alpha \\\\Leftrightarrow x = \\\\alpha + k\\\\pi$ ($k \\\\in \\\\mathbb{Z}$).",
-      "commonMistake": "- Lỗi 1: Quên đuôi chu kỳ $+k2\\\\pi$ của sin, cos hoặc nhầm với $+k\\\\pi$ của tan.\\n- Lỗi 2: Thiếu trường hợp nghiệm $x = \\\\pi - \\\\alpha + k2\\\\pi$ của hàm số sin.",
-      "action": "Bước 1: Chuyển vế đưa về dạng chuẩn $\\\\sin x = m$, $\\\\cos x = m$.\\nBước 2: Sử dụng bảng giá trị lượng giác hoặc bấm máy tính SHIFT SIN, SHIFT COS để tìm góc $\\\\alpha$.\\nBước 3: Viết đầy đủ 2 họ nghiệm kèm đuôi $k2\\\\pi$ ($k \\\\in \\\\mathbb{Z}$)."
+      "tag": "Mol và tỉ khối chất khí",
+      "theory": "1. Số mol chất: $n = \\\\frac{m}{M}$ (mol), trong đó $m$ là khối lượng chất (gam), $M$ là khối lượng mol (g/mol).\\n2. Ở điều kiện chuẩn (25 °C, 1 bar), 1 mol chất khí bất kì chiếm thể tích 24,79 lít: $V = 24{,}79 \\\\cdot n$ (lít).\\n3. Tỉ khối của khí A đối với khí B: $d_{A/B} = \\\\frac{M_A}{M_B}$; tỉ khối của khí A đối với không khí: $d_{A/kk} = \\\\frac{M_A}{29}$.",
+      "commonMistake": "- Lỗi 1: Nhầm khối lượng mol phân tử với khối lượng nguyên tử, ví dụ lấy $M_{\\\\mathrm{O_2}} = 16$ g/mol thay vì $32$ g/mol.\\n- Lỗi 2: Dùng 22,4 lít (điều kiện cũ) thay vì 24,79 lít cho 1 mol khí ở điều kiện chuẩn.",
+      "action": "Bước 1: Viết đúng công thức hoá học của chất, tính khối lượng mol $M$ bằng tổng khối lượng các nguyên tử trong phân tử.\\nBước 2: Tính số mol theo $n = \\\\frac{m}{M}$ hoặc $n = \\\\frac{V}{24{,}79}$.\\nBước 3: Kiểm tra lại đơn vị (gam, lít, mol) trước khi chọn đáp án."
     }
   ],
 ${wantQuestionAnalyses ? `  "questionAnalyses": [
     {
       "questionIndex": 1,
-      "mistakeAnalysis": "Học sinh chưa nắm chắc công thức nghiệm ĐẦY ĐỦ của phương trình lượng giác cơ bản dạng $\\\\sin x = \\\\sin\\\\alpha$ - chỉ nhớ 1 họ nghiệm $x = \\\\frac{\\\\pi}{3} + k2\\\\pi$ mà quên mất còn 1 họ nghiệm nữa là $x = \\\\pi - \\\\frac{\\\\pi}{3} + k2\\\\pi$, đây là lỗ hổng rất phổ biến khi mới học phương trình lượng giác cơ bản.",
-      "correctSolution": "Ôn lại bảng công thức nghiệm của cả 3 loại phương trình lượng giác cơ bản (sin, cos, tan) - đặc biệt chú ý: sin và cos luôn cho 2 họ nghiệm, chỉ riêng tan mới cho 1 họ nghiệm. Nên luyện thêm 3-5 bài dạng phương trình lượng giác cơ bản để ghi nhớ chắc quy tắc này."
+      "mistakeAnalysis": "Học sinh tính khối lượng mol của khí oxygen bằng khối lượng nguyên tử O ($16$ g/mol) thay vì khối lượng mol phân tử $\\\\mathrm{O_2}$ ($32$ g/mol) nên số mol tính ra gấp đôi giá trị đúng - đây là lỗ hổng về phân biệt nguyên tử và phân tử của đơn chất khí.",
+      "correctSolution": "Ôn lại cách tính khối lượng mol phân tử từ công thức hoá học (cộng khối lượng của tất cả nguyên tử trong phân tử), đặc biệt với các đơn chất khí $\\\\mathrm{O_2}$, $\\\\mathrm{H_2}$, $\\\\mathrm{N_2}$, $\\\\mathrm{Cl_2}$. Nên luyện thêm 3-5 bài tính số mol từ khối lượng của các khí này để ghi nhớ chắc."
     }
   ],
 ` : ''}  "exercises": [
     {
-      "content": "Các nghiệm của phương trình $2\\\\sin x - 1 = 0$ là:",
+      "content": "Số mol của $8$ gam khí oxygen ($\\\\mathrm{O_2}$) là (cho $\\\\mathrm{O} = 16$):",
       "options": [
-        { "key": "A", "text": "$x = \\\\frac{\\\\pi}{6} + k2\\\\pi$ và $x = \\\\frac{5\\\\pi}{6} + k2\\\\pi$ ($k \\\\in \\\\mathbb{Z}$)" },
-        { "key": "B", "text": "$x = \\\\frac{\\\\pi}{3} + k2\\\\pi$ và $x = \\\\frac{2\\\\pi}{3} + k2\\\\pi$ ($k \\\\in \\\\mathbb{Z}$)" },
-        { "key": "C", "text": "$x = \\\\frac{\\\\pi}{6} + k\\\\pi$ và $x = -\\\\frac{\\\\pi}{6} + k\\\\pi$ ($k \\\\in \\\\mathbb{Z}$)" },
-        { "key": "D", "text": "$x = \\\\frac{\\\\pi}{3} + k\\\\pi$ và $x = -\\\\frac{\\\\pi}{3} + k\\\\pi$ ($k \\\\in \\\\mathbb{Z}$)" }
+        { "key": "A", "text": "$0{,}25$ mol" },
+        { "key": "B", "text": "$0{,}5$ mol" },
+        { "key": "C", "text": "$2$ mol" },
+        { "key": "D", "text": "$4$ mol" }
       ],
       "correctAnswer": "A",
-      "tags": ["Phương trình lượng giác"]
+      "tags": ["Mol và tỉ khối chất khí"]
     },
     {
-      "content": "Cho hàm số $y = x^3 - 3x + 2$ có đồ thị như hình vẽ. Hàm số nghịch biến trên khoảng nào dưới đây?",
-      "diagram": { "type": "function-graph", "expression": "x^3 - 3*x + 2", "domain": [-3, 3] },
+      "content": "Một thùng cao $1{,}2$ m đựng đầy nước. Biết trọng lượng riêng của nước là $d = 10\\\\,000$ N/m³. Áp suất của nước tác dụng lên đáy thùng là:",
       "options": [
-        { "key": "A", "text": "$(-1; 1)$" },
-        { "key": "B", "text": "$(-\\\\infty; -1)$" },
-        { "key": "C", "text": "$(1; +\\\\infty)$" },
-        { "key": "D", "text": "$(-1; 0)$" }
+        { "key": "A", "text": "$12\\\\,000$ Pa" },
+        { "key": "B", "text": "$1\\\\,200$ Pa" },
+        { "key": "C", "text": "$120\\\\,000$ Pa" },
+        { "key": "D", "text": "$8\\\\,333$ Pa" }
       ],
       "correctAnswer": "A",
-      "tags": ["Khảo sát hàm số"]
+      "tags": ["Áp suất chất lỏng - Áp suất khí quyển"]
     },
     {
-      "content": "Cho hàm số $y = f(x)$ có bảng biến thiên như hình vẽ. Hàm số đạt cực đại tại điểm nào?",
-      "diagram": { "type": "variation-table", "points": ["-\\\\infty", "0", "2", "+\\\\infty"], "signs": ["+", "-", "+"], "values": ["-\\\\infty", "4", "0", "+\\\\infty"] },
+      "content": "Cho phản ứng: $\\\\mathrm{Zn + 2HCl \\\\rightarrow ZnCl_2 + H_2}$. Hoà tan hoàn toàn $6{,}5$ gam kẽm trong dung dịch hydrochloric acid dư. Thể tích khí hydrogen thu được ở điều kiện chuẩn (25 °C, 1 bar) là (cho $\\\\mathrm{Zn} = 65$):",
       "options": [
-        { "key": "A", "text": "$x = 0$" },
-        { "key": "B", "text": "$x = 2$" },
-        { "key": "C", "text": "$x = 4$" },
-        { "key": "D", "text": "$x = -\\\\infty$" }
+        { "key": "A", "text": "$2{,}479$ lít" },
+        { "key": "B", "text": "$2{,}24$ lít" },
+        { "key": "C", "text": "$4{,}958$ lít" },
+        { "key": "D", "text": "$24{,}79$ lít" }
       ],
       "correctAnswer": "A",
-      "tags": ["Khảo sát hàm số"]
+      "tags": ["Tính theo phương trình hoá học"]
     },
     {
-      "content": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông, $SA \\\\perp (ABCD)$. Gọi $O$ là giao điểm của $AC$ và $BD$. Khẳng định nào sau đây đúng?",
-      "diagram": { "type": "solid-geometry", "shape": "pyramid4", "baseLabels": ["A", "B", "C", "D"], "apexLabel": "S", "extraPoints": [{ "name": "O", "type": "intersection", "points": ["A", "C", "B", "D"] }] },
+      "content": "Cơ quan nào sau đây thuộc hệ tuần hoàn của cơ thể người?",
       "options": [
-        { "key": "A", "text": "$BD \\\\perp (SAC)$" },
-        { "key": "B", "text": "$BD \\\\perp (SAB)$" },
-        { "key": "C", "text": "$BD \\\\perp SC$" },
-        { "key": "D", "text": "$BD \\\\perp SA$" }
+        { "key": "A", "text": "Tim" },
+        { "key": "B", "text": "Phổi" },
+        { "key": "C", "text": "Dạ dày" },
+        { "key": "D", "text": "Thận" }
       ],
       "correctAnswer": "A",
-      "tags": ["Hình học không gian"]
+      "tags": ["Máu và hệ tuần hoàn của cơ thể người"]
     }
   ]
 }
 
 QUY TẮC SỐNG CÒN BẮT BUỘC:
 1. PHÂN LOẠI BÀI TẬP THEO CHỦ ĐỀ:
-   - Trong mỗi phần tử 'exercises', trường 'tags' BẮT BUỘC chứa đúng tên chuyên đề tương ứng (ví dụ: ['Phương trình lượng giác'], ['Phương trình mũ và lôgarit'], ['Cấp số cộng và cấp số nhân'], ['Khảo sát hàm số']).
-   - Tên chuyên đề trong 'tags' phải khớp với tên chuyên đề trong 'steps' để hệ thống nhóm bài tập theo từng chuyên đề.
-2. HÌNH ẢNH/HÌNH VẼ - CHỈ ĐƯỢC DÙNG 5 LOẠI HÌNH CÓ CẤU TRÚC SAU (do hệ thống tự vẽ lại chính xác từ dữ liệu bạn cung cấp, KHÔNG phải bạn tự vẽ ảnh):
-   a) ĐỒ THỊ HÀM SỐ - thêm trường 'diagram' dạng:
-      "diagram": { "type": "function-graph", "expression": "<biểu thức theo x, cú pháp: + - * / ^, ngoặc, sin cos tan sqrt abs ln log exp, hằng số pi>", "domain": [xMin, xMax] }
-      - 'expression' PHẢI khớp CHÍNH XÁC với hàm số $y = ...$ đã nêu trong 'content' (không được vẽ hàm khác).
-      - CHỈ dùng cho hàm số vẽ được trong mặt phẳng 2D bằng 1 biểu thức theo x (đa thức, phân thức, lượng giác cơ bản) - KHÔNG dùng cho hàm có tham số ẩn (m, a, b...) hoặc hàm cần vẽ nhiều nhánh phức tạp.
-   b) BẢNG BIẾN THIÊN - thêm trường 'diagram' dạng:
-      "diagram": { "type": "variation-table", "points": ["-\\\\infty", "x1", "x2", ..., "+\\\\infty"], "signs": ["+", "-", ...], "values": ["-\\\\infty", "y1", "y2", ..., "+\\\\infty"] }
-      - 'points' và 'values' PHẢI có ĐÚNG cùng độ dài; 'signs' PHẢI có độ dài ÍT HƠN 'points' đúng 1 (số dấu = số khoảng giữa các mốc).
-      - Các mốc 'points' PHẢI xếp theo thứ tự tăng dần, thường bắt đầu bằng "-\\\\infty" và kết thúc bằng "+\\\\infty".
-   c) HÌNH HỌC KHÔNG GIAN CƠ BẢN (hình chóp/lăng trụ) - thêm trường 'diagram' dạng:
-      "diagram": { "type": "solid-geometry", "shape": "pyramid3"|"pyramid4"|"prism3"|"prism4", "baseLabels": ["A","B","C"] hoặc ["A","B","C","D"], "apexLabel": "S" (bắt buộc với pyramid3/pyramid4, bỏ qua với prism), "topLabels": ["A'","B'",...] (tuỳ chọn, chỉ dùng cho prism3/prism4, mặc định tự thêm dấu ' nếu bỏ trống), "extraPoints": [{ "name": "M", "type": "midpoint", "points": ["A","D"] }, { "name": "O", "type": "intersection", "points": ["A","C","B","D"] }] (tuỳ chọn, dùng khi đề có nhắc trung điểm/giao điểm 2 đường chéo đáy) }
-      - 'shape' = "pyramid3"/"pyramid4": hình chóp đáy tam giác/tứ giác (đỉnh 'apexLabel'). 'shape' = "prism3"/"prism4": hình lăng trụ đứng đáy tam giác/tứ giác (kể cả hình hộp chữ nhật/hình lập phương, dùng "prism4").
-      - 'baseLabels' PHẢI khớp ĐÚNG tên các đỉnh đáy đã nêu trong 'content' (ví dụ content nói "$S.ABCD$" thì baseLabels = ["A","B","C","D"], apexLabel = "S").
-      - CHỈ dùng cho hình chóp/lăng trụ ĐƠN GIẢN có thể mô tả bằng đúng các trường trên - KHÔNG dùng cho hình phức tạp hơn (đa diện lồng nhau, khối đa diện ghép nhiều khối).
-   d) HỆ TRỤC TOẠ ĐỘ OXYZ - thêm trường 'diagram' dạng:
-      "diagram": { "type": "oxyz", "points": [{ "name": "A", "coords": [1, 2, 3] }, ...], "vectors": [{ "from": "O", "to": "A" }, ...] (tuỳ chọn), "plane": ["A", "B", "C"] (tuỳ chọn, tô mờ mặt phẳng qua 3-4 điểm đã khai báo) }
-      - 'coords' PHẢI khớp CHÍNH XÁC toạ độ đã nêu trong 'content' (ví dụ content ghi "$A(1;2;3)$" thì coords = [1,2,3]).
-      - CHỈ dùng khi đề cho SẴN toạ độ cụ thể của điểm/vectơ (không dùng khi đề chỉ nói chung chung về mặt phẳng/đường thẳng bằng phương trình tổng quát mà không có điểm/vectơ cụ thể để vẽ).
-   e) KHỐI TRÒN XOAY CƠ BẢN (nón/trụ/cầu) - thêm trường 'diagram' dạng:
-      "diagram": { "type": "round-solid", "shape": "cone"|"cylinder"|"sphere", "radiusLabel": "r" (tuỳ chọn, mặc định "r"), "heightLabel": "h" (tuỳ chọn, mặc định "h", bỏ qua với sphere), "apexLabel": "S" (tuỳ chọn, chỉ cone), "centerLabel": "O" (tuỳ chọn) }
-      - Hình vẽ MANG TÍNH MINH HOẠ (không theo tỉ lệ số liệu đề bài) - 'radiusLabel'/'heightLabel' PHẢI khớp đúng ký hiệu chữ (r, h...) hoặc số cụ thể đã dùng trong 'content'.
-      - CHỈ dùng cho nón/trụ/cầu ĐƠN GIẢN (không dùng cho khối tròn xoay phức tạp, ghép nhiều khối, hoặc mặt cầu ngoại tiếp/nội tiếp đa diện - trường hợp đó vẫn dùng shape "solid-geometry" ở mục (c) cho khối đa diện, không vẽ thêm mặt cầu).
-   - CHỈ thêm trường 'diagram' khi câu hỏi THẬT SỰ cần và đúng 1 trong 5 dạng trên - các chủ đề khác không vẽ được bằng các dạng này (lượng giác, mũ-logarit, cấp số...) thì KHÔNG có trường 'diagram', chỉ mô tả bằng lời/công thức như bình thường.
-   - QUAN TRỌNG: nếu câu hỏi gốc học sinh làm sai (trong DANH SÁCH CÂU HỎI CỤ THỂ bên dưới, nếu có) có kèm dòng "Hình minh hoạ gốc (dữ liệu CHÍNH XÁC...)", đây LÀ dữ liệu 'diagram' THẬT của chính câu hỏi đó - PHẢI dùng đúng 'type' của nó (và giữ đúng cấu trúc a/b/c/d/e tương ứng) cho các bài tập tương tự sinh ra từ câu này, chỉ được đổi các con số/nhãn cụ thể (VD: đổi hệ số hàm số, đổi tên đỉnh, đổi mốc bảng biến thiên) sao cho khớp với đề bài MỚI - TUYỆT ĐỐI KHÔNG tự đổi sang loại hình khác. Nếu câu gốc KHÔNG có dòng "Hình minh hoạ gốc" này (không có hình) thì cũng KHÔNG tự thêm hình cho bài tập tương tự. Nếu câu hỏi gốc không nằm trong DANH SÁCH CÂU HỎI CỤ THỂ (trường hợp chỉ có CHUYÊN ĐỀ YẾU, không có câu cụ thể), mới XÁC ĐỊNH LOẠI HÌNH dựa vào nội dung văn bản như mô tả (ví dụ "Cho hình chóp $S.ABCD$..." nghĩa là có hình chóp tứ giác) - KHÔNG bỏ qua hình chỉ vì chủ đề không phải Khảo sát hàm số.
-   - NGHIÊM CẤM mọi hình thức khác: KHÔNG được viết "như hình vẽ" mà không có trường 'diagram' đi kèm đúng cấu trúc trên, KHÔNG được mô tả hình học không gian/hình vẽ tự do bằng lời rồi bảo học sinh tự hình dung, KHÔNG được chèn mã vẽ vector/SVG path/toạ độ rác vào 'content'.
-3. ĐỀ BÀI CÂU HỎI VÀ ĐÁP ÁN PHẢI CHUẨN XÁC VÀ ĐẦY ĐỦ CÔNG THỨC TOÁN:
-   - Trong mỗi phần tử 'exercises', trường 'content' BẮT BUỘC PHẢI CHỨA PHƯƠNG TRÌNH / BIỂU THỨC / HÀM SỐ CỤ THỂ bọc trong $...$.
-   - Ví dụ đúng: 'Tổng các nghiệm của phương trình $9^x - 4 \\\\cdot 3^x + 3 = 0$ là:'
-   - TUYỆT ĐỐI KHÔNG chứa mã vẽ vector, SVG path, toạ độ rác (như c0,-2... H40000...).
-4. TẤT CẢ CÔNG THỨC VÀ BIẾN SỐ PHẢI BỌC TRONG $...$:
-   - BẮT BUỘC: $2\\\\sin x - 1 = 0$, $x = \\\\frac{\\\\pi}{6} + k2\\\\pi$, $u_n = 2^n$, $y = \\\\frac{2x-1}{x+1}$, $a > 0, a \\\\neq 1$.
+   - Trong mỗi phần tử 'exercises', trường 'tags' BẮT BUỘC chứa đúng tên chủ đề tương ứng (ví dụ: ['Phản ứng hoá học'], ['Mol và tỉ khối chất khí'], ['Lực đẩy Archimedes'], ['Cường độ dòng điện và hiệu điện thế'], ['Hệ hô hấp ở người']).
+   - Tên chủ đề trong 'tags' phải khớp với tên chủ đề trong 'steps' (và giữ nguyên tên chủ đề yếu đã cho ở trên) để hệ thống nhóm bài tập theo từng chủ đề.
+2. KHÔNG DÙNG HÌNH VẼ (hệ thống không hiển thị được hình vẽ, sơ đồ do AI tự tạo):
+   - KHÔNG thêm trường 'diagram' vào bất kỳ bài tập nào.
+   - KHÔNG viết "như hình vẽ", "quan sát hình bên", "sơ đồ sau"... Khi câu hỏi cần mạch điện, dụng cụ thí nghiệm, đòn bẩy, cơ quan trong cơ thể, chuỗi thức ăn/lưới thức ăn..., hãy MÔ TẢ BẰNG LỜI đầy đủ (ví dụ: "Mạch điện gồm nguồn điện, công tắc K đóng và hai bóng đèn Đ1, Đ2 mắc nối tiếp" hoặc "Chuỗi thức ăn: cỏ → châu chấu → ếch → rắn").
+   - KHÔNG chèn mã vẽ vector, SVG path, toạ độ rác (như c0,-2... H40000...) vào 'content'.
+3. ĐỀ BÀI CÂU HỎI VÀ ĐÁP ÁN PHẢI CHUẨN XÁC VÀ ĐẦY ĐỦ DỮ KIỆN:
+   - Câu hỏi tính toán (Vật lí, Hoá học) trong 'content' BẮT BUỘC cho đủ số liệu kèm đơn vị, các hằng số cần dùng (trọng lượng riêng, khối lượng nguyên tử...) và phương trình hoá học (nếu có) bọc trong $...$; câu hỏi lý thuyết (đặc biệt phần Sinh học) phải nêu rõ ràng, đủ ý, chỉ có đúng 1 đáp án đúng.
+   - Kết quả của đáp án đúng PHẢI được tính lại chính xác; các phương án nhiễu nên đến từ lỗi thường gặp (nhầm đơn vị, nhầm công thức, quên cân bằng phương trình, nhầm khái niệm).
+   - Ví dụ đúng: 'Đốt cháy hoàn toàn $3{,}1$ gam phosphorus trong khí oxygen theo phương trình $\\\\mathrm{4P + 5O_2 \\\\xrightarrow{t^o} 2P_2O_5}$. Khối lượng $\\\\mathrm{P_2O_5}$ thu được là (cho $\\\\mathrm{P} = 31$, $\\\\mathrm{O} = 16$):'
+4. TẤT CẢ CÔNG THỨC, ĐẠI LƯỢNG VÀ PHƯƠNG TRÌNH HOÁ HỌC PHẢI BỌC TRONG $...$:
+   - BẮT BUỘC: $p = \\\\frac{F}{S}$, $D = \\\\frac{m}{V}$, $F_A = d \\\\cdot V$, $M = F \\\\cdot d$, $I$, $U$, $n = \\\\frac{m}{M}$, $C\\\\% = \\\\frac{m_{ct}}{m_{dd}} \\\\cdot 100\\\\%$, $\\\\mathrm{H_2SO_4}$, $\\\\mathrm{2H_2 + O_2 \\\\xrightarrow{t^o} 2H_2O}$.
+   - Công thức hoá học viết bằng $\\\\mathrm{...}$ với chỉ số dưới dùng dấu _ (ví dụ $\\\\mathrm{CaCO_3}$, $\\\\mathrm{Fe_2O_3}$). Điều kiện phản ứng ghi trên mũi tên bằng $\\\\xrightarrow{...}$ (ví dụ $\\\\xrightarrow{t^o}$, $\\\\xrightarrow{\\\\mathrm{MnO_2}}$).
+   - KHÔNG đặt chữ tiếng Việt có dấu bên trong $...$ (viết chữ ra ngoài công thức). Đơn vị đo (Pa, N/m², g/mol, °C, lít...) viết ngoài công thức như ví dụ ở trên.
    - TUYỆT ĐỐI KHÔNG dùng dấu backtick (\`...\`) để bọc công thức.
-5. SỐ LƯỢNG: Sinh ĐÚNG ${totalExercises} câu hỏi trắc nghiệm tương tự, phân bố đều theo từng chuyên đề yếu.${wantQuestionAnalyses ? `
+5. SỐ LƯỢNG: Sinh ĐÚNG ${totalExercises} câu hỏi trắc nghiệm tương tự, phân bố đều theo từng chủ đề yếu.${wantQuestionAnalyses ? `
 6. PHÂN TÍCH TỪNG CÂU SAI ("questionAnalyses") LÀ BẮT BUỘC:
    - PHẢI có ĐÚNG ${wrongQuestions.length} phần tử trong 'questionAnalyses', mỗi phần tử ứng với ĐÚNG 1 câu trong "DANH SÁCH CÁC CÂU HỎI CỤ THỂ" theo thứ tự [Câu sai 1], [Câu sai 2], ... - trường 'questionIndex' = số thứ tự đó (1, 2, 3...).
-   - 'mistakeAnalysis' (LỖ HỔNG KIẾN THỨC): chỉ ra CỤ THỂ đây là lỗ hổng kiến thức nào (thiếu công thức gì, nhầm quy tắc/điều kiện gì, hiểu sai khái niệm gì) khiến học sinh chọn nhầm đáp án đã chọn - KHÔNG viết chung chung kiểu "học sinh chưa nắm vững kiến thức", và KHÔNG giải lại chi tiết bài toán.
+   - 'mistakeAnalysis' (LỖ HỔNG KIẾN THỨC): chỉ ra CỤ THỂ đây là lỗ hổng kiến thức nào (thiếu công thức gì, nhầm quy tắc/điều kiện gì, hiểu sai khái niệm gì) khiến học sinh chọn nhầm đáp án đã chọn - KHÔNG viết chung chung kiểu "học sinh chưa nắm vững kiến thức", và KHÔNG giải lại chi tiết bài tập.
    - 'correctSolution' (CÁCH KHẮC PHỤC): đưa ra HƯỚNG KHẮC PHỤC lỗ hổng đó cho học sinh - nên ôn lại phần lý thuyết/công thức/dạng bài nào, cần luyện tập thêm theo hướng nào để không lặp lại lỗi này - TUYỆT ĐỐI KHÔNG trình bày lời giải chi tiết từng "Bước 1, Bước 2..." của CHÍNH câu hỏi đó vì lời giải chi tiết đầy đủ đã có sẵn trong file đáp án riêng giáo viên phát cho học sinh, viết lại ở đây là thừa và trùng lặp.` : ''}`;
 }
 
@@ -344,7 +319,7 @@ function normalizeMathText(text) {
   // QUAN TRỌNG: đôi khi Gemini không dùng lệnh LaTeX \neq mà lại chèn thẳng
   // 1 ký tự unicode "trông giống" dấu khác (≠, ⊟ boxminus, ≢, ∄...) do lỗi
   // sinh token - các ký tự này gần như KHÔNG BAO GIỜ có nghĩa hợp lệ nào
-  // khác trong ngữ cảnh Toán THPT, nên thay thế THẲNG về \neq trước, áp dụng
+  // khác trong công thức Vật lí/Hoá học, nên thay thế THẲNG về \neq trước, áp dụng
   // rộng (không chỉ riêng khuôn mẫu "a > 0, a ≠ 1") để chặn lỗi dạng này ở
   // mọi vị trí xuất hiện.
   res = res.replace(/[≠⊟≢∄]/g, ' \\neq ');
@@ -483,7 +458,7 @@ async function generateRoadmapAndExercises(studentName, weakTags = [], wrongQues
 }
 
 // ---------------------------------------------------------------------------
-// Trò chuyện trực tiếp với Gemini AI về Toán học (trang Trợ lý AI)
+// Trò chuyện trực tiếp với Gemini AI về Khoa học tự nhiên 8 (trang Trợ lý AI)
 //
 // Ưu tiên tốc độ: đo thực tế (11/2026) bản Flash-Lite bắt đầu trả lời sau
 // ~1 giây, còn các bản Flash phải "suy nghĩ" ~1000 token và xếp hàng nên mất
@@ -513,23 +488,28 @@ function buildChatContents(messages, userContext) {
   const roleName = userContext.role === 'teacher' ? 'Thầy/Cô giáo' : 'Học sinh';
   const userName = userContext.name || 'Người dùng';
 
-  const systemInstruction = `Bạn là trợ lý AI của "MathInsight AI - Phần mềm học toán cùng AI", chuyên gia Toán lớp 11 tại Việt Nam (chương trình Giáo dục phổ thông 2018). Khi tự giới thiệu, hãy xưng là trợ lý AI của MathInsight AI.
+  const systemInstruction = `Bạn là trợ lý AI của "SciInsight AI - Phần mềm học Khoa học tự nhiên 8 cùng AI", chuyên gia môn Khoa học tự nhiên lớp 8 tại Việt Nam (chương trình Giáo dục phổ thông 2018). Khi tự giới thiệu, hãy xưng là trợ lý AI của SciInsight AI.
 Bạn đang trò chuyện và hỗ trợ trực tiếp cho ${roleName} "${userName}".
 Nhiệm vụ của bạn:
-1. Giải đáp chi tiết, từng bước các bài toán Toán 11: hàm số lượng giác và phương trình lượng giác; dãy số, cấp số cộng, cấp số nhân; giới hạn của dãy số, giới hạn của hàm số, hàm số liên tục; hàm số mũ và hàm số lôgarit, phương trình và bất phương trình mũ, lôgarit; đạo hàm (định nghĩa, quy tắc tính, đạo hàm cấp hai); đường thẳng và mặt phẳng, quan hệ song song, quan hệ vuông góc trong không gian, góc và khoảng cách; thống kê với mẫu số liệu ghép nhóm; xác suất (biến cố hợp, biến cố giao, biến cố độc lập, công thức cộng và nhân xác suất). Trình bày theo cách học sinh lớp 11 đã được học, không dùng kiến thức lớp 12 (tích phân, số phức...) để giải. Nếu được hỏi kiến thức lớp khác vẫn hỗ trợ, nhưng ưu tiên chương trình Toán 11.
-2. Giải thích phương pháp giải, chứng minh công thức, lưu ý các bẫy trắc nghiệm hay gặp và chia sẻ mẹo bấm máy tính Casio (fx-580VNX, fx-880BTG).
+1. Giải đáp chi tiết, từng bước các câu hỏi và bài tập Khoa học tự nhiên 8:
+   - Hoá học: sử dụng hoá chất, thiết bị cơ bản trong phòng thí nghiệm; biến đổi vật lí và biến đổi hoá học; phản ứng hoá học và năng lượng của phản ứng; mol, khối lượng mol, thể tích mol chất khí, tỉ khối chất khí; dung dịch, độ tan, nồng độ phần trăm, nồng độ mol; định luật bảo toàn khối lượng, phương trình hoá học, tính theo phương trình hoá học, hiệu suất phản ứng; tốc độ phản ứng và chất xúc tác; acid, base, thang pH, oxide, muối, phân bón hoá học.
+   - Vật lí: khối lượng riêng; áp suất trên một bề mặt, áp suất chất lỏng, áp suất khí quyển; lực đẩy Archimedes; tác dụng làm quay của lực, moment lực, đòn bẩy; hiện tượng nhiễm điện do cọ xát, dòng điện, nguồn điện, mạch điện đơn giản, tác dụng của dòng điện, cường độ dòng điện và hiệu điện thế; năng lượng nhiệt và nội năng, dẫn nhiệt, đối lưu, bức xạ nhiệt, sự nở vì nhiệt.
+   - Sinh học: khái quát về cơ thể người; hệ vận động; dinh dưỡng và tiêu hoá; máu và hệ tuần hoàn; hệ hô hấp; hệ bài tiết và môi trường trong cơ thể; hệ thần kinh và các giác quan; hệ nội tiết; da và điều hoà thân nhiệt; sinh sản ở người; môi trường và các nhân tố sinh thái; quần thể, quần xã, hệ sinh thái, sinh quyển; cân bằng tự nhiên và bảo vệ môi trường.
+   Trình bày theo cách học sinh lớp 8 đã được học: dùng tên chất theo danh pháp IUPAC như sách giáo khoa hiện hành (oxygen, hydrogen, hydrochloric acid, sodium hydroxide...), thể tích mol chất khí ở điều kiện chuẩn (25 °C, 1 bar) là 24,79 lít. Nếu được hỏi kiến thức lớp khác vẫn hỗ trợ, nhưng ưu tiên chương trình Khoa học tự nhiên 8.
+2. Giải thích bản chất hiện tượng tự nhiên, cách tiến hành và kết quả thí nghiệm, lưu ý an toàn trong phòng thí nghiệm, liên hệ thực tế và các bẫy trắc nghiệm hay gặp (nhầm đơn vị, nhầm công thức, quên cân bằng phương trình hoá học, nhầm khái niệm).
 3. Soạn câu hỏi trắc nghiệm, bài tập tự luyện tương tự theo yêu cầu.
 4. Trả lời thân thiện, sư phạm, rõ ràng, gãy gọn.
 
 QUY TẮC CÔNG THỨC VÀ BỐ CỤC BẮT BUỘC:
-- Mọi công thức, ký hiệu toán học, biến số, phương trình PHẢI bọc trong cặp dấu $...$ (nếu trong dòng) hoặc $$...$$ (nếu hiển thị khối trung tâm).
-- Dùng cú pháp LaTeX chuẩn: $\\frac{a}{b}$, $\\sqrt{x}$, $\\int_a^b f(x)dx$, $\\log_a b$, $x = \\alpha + k2\\pi$, $\\begin{cases} f(x) = g(x) \\\\ f(x) > 0 \\end{cases}$, $a > 0, a \\neq 1$.
-- TUYỆT ĐỐI KHÔNG dùng backtick (\`...\`) cho công thức toán.
+- Mọi công thức, đại lượng vật lí, công thức hoá học, phương trình hoá học PHẢI bọc trong cặp dấu $...$ (nếu trong dòng) hoặc $$...$$ (nếu hiển thị khối trung tâm).
+- Dùng cú pháp LaTeX chuẩn: $p = \\frac{F}{S}$, $D = \\frac{m}{V}$, $F_A = d \\cdot V$, $M = F \\cdot d$, $n = \\frac{m}{M}$, $C\\% = \\frac{m_{ct}}{m_{dd}} \\cdot 100\\%$, $\\mathrm{H_2SO_4}$, $\\mathrm{2H_2 + O_2 \\xrightarrow{t^o} 2H_2O}$, $\\mathrm{2H_2O_2 \\xrightarrow{MnO_2} 2H_2O + O_2}$.
+- KHÔNG đặt chữ tiếng Việt có dấu bên trong $...$; đơn vị đo (Pa, N/m², g/mol, °C, lít...) viết ngoài công thức.
+- TUYỆT ĐỐI KHÔNG dùng backtick (\`...\`) cho công thức.
 - TRÌNH BÀY GỌN GÀNG, ĐẸP MẮT: KHÔNG dùng các đường kẻ rác (---, ___), KHÔNG lạm dụng các dấu thăng (####, ###), KHÔNG để các ký tự markdown thừa (như ** đứng một mình). Dùng gạch đầu dòng rõ ràng (- hoặc •) và số thứ tự (1., 2., Bước 1:, Bước 2:).`;
 
   // Người dùng đang xem giao diện tiếng Anh: yêu cầu AI trả lời bằng tiếng Anh.
   const languageRule = userContext.lang === 'en'
-    ? '\n\nNGÔN NGỮ: Người dùng đang dùng giao diện tiếng Anh. LUÔN trả lời hoàn toàn bằng tiếng Anh (English), kể cả khi câu hỏi viết bằng tiếng Việt; dùng thuật ngữ Toán tiếng Anh chuẩn (Step 1, Step 2, ...).'
+    ? '\n\nNGÔN NGỮ: Người dùng đang dùng giao diện tiếng Anh. LUÔN trả lời hoàn toàn bằng tiếng Anh (English), kể cả khi câu hỏi viết bằng tiếng Việt; dùng thuật ngữ khoa học tiếng Anh chuẩn (Step 1, Step 2, ...).'
     : '';
 
   // Chuyển đổi lịch sử chat sang định dạng Gemini

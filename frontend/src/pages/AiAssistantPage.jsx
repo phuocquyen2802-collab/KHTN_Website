@@ -15,14 +15,14 @@ function greetingMessage(user, lang = 'vi') {
     return {
       role: 'assistant',
       greeting: true,
-      content: `Hello ${user?.name ? `**${user.name}**` : 'there'}! I am the **AI assistant of ${APP_NAME}**. I can help you:\n- Solve problems step by step\n- Summarise theory\n- Share Casio calculator tips\n- Write tests and practice questions\n\nType your question below to get started.`,
+      content: `Hello ${user?.name ? `**${user.name}**` : 'there'}! I am the **AI assistant of ${APP_NAME}**. I can help you:\n- Solve physics, chemistry and biology exercises step by step\n- Summarise theory and explain experiments\n- Balance chemical equations\n- Write tests and practice questions\n\nType your question below to get started.`,
       timestamp: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
     };
   }
   return {
     role: 'assistant',
     greeting: true,
-    content: `Xin chào ${user?.name ? `**${user.name}**` : 'bạn'}! Tôi là **trợ lý AI của ${APP_TITLE}**. Tôi có thể giúp bạn:\n- Giải chi tiết từng bước\n- Tóm tắt lý thuyết\n- Mẹo bấm máy tính Casio\n- Soạn đề và câu hỏi luyện tập\n\nNhập câu hỏi bên dưới để bắt đầu.`,
+    content: `Xin chào ${user?.name ? `**${user.name}**` : 'bạn'}! Tôi là **trợ lý AI của ${APP_TITLE}**. Tôi có thể giúp bạn:\n- Giải chi tiết bài tập Vật lí, Hoá học, Sinh học\n- Tóm tắt lý thuyết, giải thích thí nghiệm\n- Cân bằng phương trình hoá học\n- Soạn đề và câu hỏi luyện tập\n\nNhập câu hỏi bên dưới để bắt đầu.`,
     timestamp: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
   };
 }
@@ -285,7 +285,7 @@ export default function AiAssistantPage() {
               </span>
             </h1>
             <p className="page-subtitle" style={{ margin: 0, fontSize: 13 }}>
-              Hỏi đáp, giải chi tiết từng bước, tra cứu công thức và sinh bài tập tương tự
+              Hỏi đáp Vật lí, Hoá học, Sinh học, giải chi tiết từng bước, tra cứu công thức và sinh bài tập tương tự
             </p>
           </div>
         </div>
@@ -640,7 +640,7 @@ export default function AiAssistantPage() {
                 }}
               >
                 <div className="spinner" style={{ width: 16, height: 16, borderWidth: 2 }} />
-                <span>Gemini đang suy nghĩ và tính toán bước giải...</span>
+                <span>Gemini đang suy nghĩ và soạn lời giải...</span>
               </div>
             </div>
           )}

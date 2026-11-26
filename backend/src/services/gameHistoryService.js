@@ -1,4 +1,4 @@
-// Lịch sử chơi trò chơi "Đường đua Toán học" của học sinh.
+// Lịch sử chơi trò chơi "Đường đua Khoa học" của học sinh.
 //
 // Mỗi lượt chơi có 1 phiên (game_sessions) tạo lúc bấm "Bắt đầu chơi". Mỗi
 // lần chấm 1 câu (/check), máy chủ tự ghi lại câu trả lời ĐẦU TIÊN của câu đó,

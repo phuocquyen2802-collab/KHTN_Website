@@ -1,4 +1,4 @@
-# Triển khai MathInsight AI lên server Ubuntu bằng Docker
+# Triển khai SciInsight AI lên server Ubuntu bằng Docker
 
 Toàn bộ website (giao diện + API + LibreOffice) chạy trong **1 container**,
 mở ra ngoài **1 cổng** (mặc định cổng 80). Dữ liệu được lưu trong một ổ dữ
@@ -37,7 +37,7 @@ GEMINI_API_KEY=<key Gemini thật, để trống nếu chưa có>
 
 `JWT_SECRET` là bắt buộc - thiếu thì container sẽ dừng và báo lỗi.
 
-**Font công thức (nên làm):** để ảnh công thức Toán nhập từ Word hiển thị giống
+**Font công thức (nên làm):** để ảnh công thức nhập từ Word hiển thị giống
 trên Windows, chép các font MathType/Times từ máy Windows vào
 `docker/fonts/` trên server trước khi build. Thiếu font thì π hiện thành
 `p`, ℤ hiện thành `¢`. Danh sách file xem
@@ -143,7 +143,7 @@ Email được gửi qua Resend API (https://resend.com, miễn phí 3.000 email
 4. Thêm vào `backend/.env` trên server (xem mẫu ở `backend/.env.example`):
    ```
    APP_URL=https://ten-mien-cua-website
-   EMAIL_FROM="MathInsight AI <support@ten-mien-da-xac-minh>"
+   EMAIL_FROM="SciInsight AI <support@ten-mien-da-xac-minh>"
    RESEND_API_KEY=re_xxxxxxxx
    ```
    `APP_URL` là địa chỉ người dùng mở website - nút trong email trỏ về đây.

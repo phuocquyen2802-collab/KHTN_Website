@@ -5,7 +5,7 @@ import { APP_NAME, APP_TAGLINE } from '../config/brand';
 
 export const TAGLINE = {
   vi: APP_TAGLINE,
-  en: 'Learn math with AI',
+  en: 'Learn Grade 8 Natural Science with AI',
 };
 
 export const SWITCH_TEXT = {
@@ -21,9 +21,9 @@ export const LANDING_TEXT = {
     nav: { features: 'Tính năng', how: 'Cách hoạt động', audience: 'Giáo viên và học sinh' },
     ctaLogin: 'Đăng nhập',
     ctaDashboard: 'Vào trang của tôi',
-    heroTitle: 'Học toán cùng AI, biết rõ mình cần ôn phần nào.',
+    heroTitle: 'Học Khoa học tự nhiên 8 cùng AI, biết rõ mình cần ôn phần nào.',
     heroText:
-      'Làm bài trắc nghiệm, xem ngay chuyên đề còn yếu và ôn tập theo lộ trình do AI soạn, giáo viên duyệt.',
+      'Làm bài trắc nghiệm Vật lí, Hoá học, Sinh học, xem ngay chuyên đề còn yếu và ôn tập theo lộ trình do AI soạn, giáo viên duyệt.',
     heroSecondary: 'Xem cách hoạt động',
     explore: 'Khám phá tính năng',
     collage: {
@@ -31,12 +31,12 @@ export const LANDING_TEXT = {
       exam: 'Đề 2',
       attempt: 'Lần 1',
       topics: [
-        { name: 'Cấp số cộng và cấp số nhân', wrong: 'Sai 60%' },
-        { name: 'Phương trình lượng giác', wrong: 'Sai 40%' },
+        { name: 'Tính theo phương trình hoá học', wrong: 'Sai 60%' },
+        { name: 'Dung dịch và nồng độ', wrong: 'Sai 40%' },
       ],
-      stepTopic: 'Phương trình mũ và logarit',
+      stepTopic: 'Lực đẩy Archimedes',
       stepTheory: 'Lý thuyết cần nắm',
-      stepMistake: 'Quên điều kiện cơ số',
+      stepMistake: 'Nhầm V là thể tích cả vật',
       aiTitle: 'AI đã phân tích bài làm',
       aiSub: 'Chờ giáo viên duyệt',
     },
@@ -46,7 +46,7 @@ export const LANDING_TEXT = {
       {
         icon: 'upload',
         title: 'Nhập đề từ file Word',
-        text: 'Tải đề trắc nghiệm có công thức MathType, hệ thống tách câu hỏi và giữ công thức hiển thị rõ nét. Đính kèm được file đáp án chi tiết.',
+        text: 'Tải đề trắc nghiệm có công thức Vật lí, phương trình hoá học soạn bằng MathType, hệ thống tách câu hỏi và giữ công thức hiển thị rõ nét. Đính kèm được file đáp án chi tiết.',
       },
       {
         icon: 'check',
@@ -70,8 +70,8 @@ export const LANDING_TEXT = {
       },
       {
         icon: 'sparkles',
-        title: 'Trợ lý AI giải toán',
-        text: 'Hỏi bất cứ lúc nào: giải chi tiết từng bước, tóm tắt lý thuyết, mẹo bấm máy tính Casio.',
+        title: 'Trợ lý AI Khoa học tự nhiên',
+        text: 'Hỏi bất cứ lúc nào: giải bài tập Vật lí, Hoá học, Sinh học từng bước, tóm tắt lý thuyết, giải thích hiện tượng thí nghiệm.',
       },
     ],
     howTitle: 'Cách hoạt động',
@@ -84,7 +84,7 @@ export const LANDING_TEXT = {
     ],
     forTeachersTitle: 'Dành cho giáo viên',
     forTeachers: [
-      'Tạo đề nhanh từ file Word có công thức Toán',
+      'Tạo đề nhanh từ file Word có công thức Vật lí, Hoá học',
       'Theo dõi điểm và chuyên đề yếu của từng học sinh, từng lớp',
       'Xem lại bài làm, duyệt và chỉnh sửa lộ trình AI trước khi gửi',
       'Đăng thông báo và trò chuyện với học sinh',
@@ -104,15 +104,15 @@ export const LANDING_TEXT = {
   },
 
   en: {
-    pageTitle: `${APP_NAME} - Learn math with AI`,
+    pageTitle: `${APP_NAME} - Learn Grade 8 Natural Science with AI`,
     homeLabel: `${APP_NAME} - Home`,
     navLabel: 'On this page',
     nav: { features: 'Features', how: 'How it works', audience: 'Teachers and students' },
     ctaLogin: 'Log in',
     ctaDashboard: 'Go to my dashboard',
-    heroTitle: 'Learn math with AI and know exactly what to review.',
+    heroTitle: 'Learn Grade 8 Natural Science with AI and know exactly what to review.',
     heroText:
-      'Take multiple-choice tests, see your weak topics right away and review with a plan written by AI and approved by your teacher.',
+      'Take multiple-choice tests in physics, chemistry and biology, see your weak topics right away and review with a plan written by AI and approved by your teacher.',
     heroSecondary: 'See how it works',
     explore: 'Explore features',
     collage: {
@@ -120,12 +120,12 @@ export const LANDING_TEXT = {
       exam: 'Test 2',
       attempt: 'Attempt 1',
       topics: [
-        { name: 'Arithmetic and geometric sequences', wrong: '60% wrong' },
-        { name: 'Trigonometric equations', wrong: '40% wrong' },
+        { name: 'Calculations from chemical equations', wrong: '60% wrong' },
+        { name: 'Solutions and concentration', wrong: '40% wrong' },
       ],
-      stepTopic: 'Exponential and logarithmic equations',
+      stepTopic: 'Buoyant force (Archimedes)',
       stepTheory: 'Key theory',
-      stepMistake: 'Forgot the condition on the base',
+      stepMistake: 'Used the whole volume of the object for V',
       aiTitle: 'AI has analysed the test',
       aiSub: 'Waiting for teacher approval',
     },
@@ -135,7 +135,7 @@ export const LANDING_TEXT = {
       {
         icon: 'upload',
         title: 'Import tests from Word',
-        text: 'Upload multiple-choice tests written with MathType. The system splits them into questions and keeps every formula sharp. A detailed answer key can be attached.',
+        text: 'Upload multiple-choice tests with physics formulas and chemical equations written in MathType. The system splits them into questions and keeps every formula sharp. A detailed answer key can be attached.',
       },
       {
         icon: 'check',
@@ -159,8 +159,8 @@ export const LANDING_TEXT = {
       },
       {
         icon: 'sparkles',
-        title: 'AI math assistant',
-        text: 'Ask at any time: step-by-step solutions, theory summaries and Casio calculator tips.',
+        title: 'AI science assistant',
+        text: 'Ask at any time: step-by-step physics, chemistry and biology solutions, theory summaries and explanations of experiments.',
       },
     ],
     howTitle: 'How it works',
@@ -173,7 +173,7 @@ export const LANDING_TEXT = {
     ],
     forTeachersTitle: 'For teachers',
     forTeachers: [
-      'Create tests quickly from Word files with math formulas',
+      'Create tests quickly from Word files with physics and chemistry formulas',
       'Track scores and weak topics of every student and every class',
       'Review submissions, approve and edit AI plans before sending',
       'Post announcements and chat with students',
@@ -197,13 +197,13 @@ export const LOGIN_TEXT = {
   vi: {
     backToHome: 'Về trang giới thiệu',
     back: 'Trang giới thiệu',
-    heroTitle: 'Học toán cùng AI, biết rõ mình cần ôn phần nào.',
+    heroTitle: 'Học Khoa học tự nhiên 8 cùng AI, biết rõ mình cần ôn phần nào.',
     heroText: `Làm bài trắc nghiệm và nhận kết quả ngay. ${APP_NAME} phân tích các chuyên đề còn yếu, gợi ý lộ trình ôn tập và bài tập tương tự cho từng học sinh.`,
-    plotLabel: 'Đồ thị hàm số lượng giác y = sin x với giá trị lớn nhất và nhỏ nhất',
-    plotMax: 'GTLN',
-    plotMin: 'GTNN',
+    plotLabel: 'Đồ thị thể tích khí oxygen sinh ra theo thời gian khi phân huỷ hydrogen peroxide, khi có và không có chất xúc tác MnO₂',
+    plotFast: 'Có xúc tác',
+    plotSlow: 'Không xúc tác',
     noteTitle: 'Gợi ý từ AI',
-    noteText: 'Ôn lại đồ thị hàm số lượng giác.',
+    noteText: 'Ôn lại tốc độ phản ứng và chất xúc tác.',
     heroFoot: 'Dành cho giáo viên và học sinh',
     title: 'Đăng nhập',
     subtitle: 'Dùng tài khoản do giáo viên hoặc nhà trường cấp.',
@@ -263,13 +263,13 @@ export const LOGIN_TEXT = {
   en: {
     backToHome: 'Back to the home page',
     back: 'Home page',
-    heroTitle: 'Learn math with AI and know exactly what to review.',
+    heroTitle: 'Learn Grade 8 Natural Science with AI and know exactly what to review.',
     heroText: `Take multiple-choice tests and get results instantly. ${APP_NAME} finds weak topics and suggests a review plan with similar exercises for each student.`,
-    plotLabel: 'Graph of the trigonometric function y = sin x with its maximum and minimum',
-    plotMax: 'Max',
-    plotMin: 'Min',
+    plotLabel: 'Graph of the volume of oxygen released over time when hydrogen peroxide decomposes, with and without the MnO₂ catalyst',
+    plotFast: 'With catalyst',
+    plotSlow: 'No catalyst',
     noteTitle: 'AI suggestion',
-    noteText: 'Review graphs of trigonometric functions.',
+    noteText: 'Review reaction rate and catalysts.',
     heroFoot: 'For teachers and students',
     title: 'Log in',
     subtitle: 'Use the account provided by your teacher or school.',

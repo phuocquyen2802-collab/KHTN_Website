@@ -975,7 +975,7 @@ export default function TeacherExamsPage() {
                   <div className="ce-step-head">
                     <h3>Tải đề thi lên</h3>
                   </div>
-                  <p className="ce-step-desc">File Word (.docx) có câu hỏi trắc nghiệm, công thức Toán được giữ nguyên.</p>
+                  <p className="ce-step-desc">File Word (.docx) có câu hỏi trắc nghiệm, công thức Vật lí, Hoá học được giữ nguyên.</p>
 
                   {uploadingWord ? (
                     <div className="ce-progress" role="status" aria-live="polite">

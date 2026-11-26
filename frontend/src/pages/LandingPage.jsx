@@ -25,9 +25,9 @@ function scrollToId(id) {
 }
 
 // Ảnh ghép minh hoạ: các mảnh giao diện thật của phần mềm (thẻ kết quả,
-// bước lộ trình có công thức Toán, trạng thái phân tích AI).
+// bước lộ trình có công thức Vật lí, trạng thái phân tích AI).
 function ProductCollage({ text }) {
-  const formula = renderMath(String.raw`$a^x = b \Leftrightarrow x = \log_a b$`);
+  const formula = renderMath(String.raw`$F_A = d \cdot V$`);
   return (
     <div className="lp-collage" aria-hidden="true">
       <div className="lp-window">

@@ -10,45 +10,41 @@ import { LOGIN_TEXT, TAGLINE } from '../i18n/publicText';
 // hàng trên cùng là nút quay lại (back). Ngôn ngữ và chế độ tối chọn ở trang
 // giới thiệu (hoặc trong menu sau khi đăng nhập), trang này dùng theo.
 
-// Hình minh hoạ bên trái: đồ thị hàm số lượng giác y = sin x (Toán 11) trên
-// đoạn [-π; 2π], giấy kẻ ô; đánh dấu giá trị lớn nhất (x = π/2) và nhỏ nhất
-// (x = 3π/2). Toạ độ màn hình: gốc O tại (193; 170), 1 radian = 52px,
-// 1 đơn vị trục y = 110px, ô lưới 40px.
-const O = { x: 193, y: 170 };
-const UX = 52;
-const UY = 110;
-const toX = (x) => O.x + x * UX;
-const toY = (y) => O.y - y * UY;
+// Hình minh hoạ bên trái (KHTN 8 - Tốc độ phản ứng và chất xúc tác): thể tích
+// khí oxygen V sinh ra theo thời gian t khi phân huỷ hydrogen peroxide
+// (2H₂O₂ → 2H₂O + O₂), một đường có chất xúc tác MnO₂ (nhanh), một đường không
+// có (chậm), giấy kẻ ô. Cùng thời điểm t₁ đánh dấu V₁ (có xúc tác) và V₂
+// (không xúc tác). Mô phỏng định tính: V = VMAX·(1 − e^(−t/τ)), toạ độ màn hình
+// tính bằng px, gốc O tại (40; 290), ô lưới 40px.
+const O = { x: 40, y: 290 };
+const VMAX = 170;
+const TAU_FAST = 60;
+const TAU_SLOW = 210;
+const T_END = 486;
+const T1 = 120;
+const toX = (t) => O.x + t;
+const toY = (v) => O.y - v;
+const volume = (t, tau) => VMAX * (1 - Math.exp(-t / tau));
 
-const CURVE = (() => {
+const curve = (tau) => {
   const pts = [];
-  const n = 160;
-  const from = -Math.PI - 0.25;
-  const to = 2 * Math.PI + 0.3;
+  const n = 120;
   for (let i = 0; i <= n; i += 1) {
-    const x = from + ((to - from) * i) / n;
-    pts.push(`${i ? 'L' : 'M'}${toX(x).toFixed(1)} ${toY(Math.sin(x)).toFixed(1)}`);
+    const t = (T_END * i) / n;
+    pts.push(`${i ? 'L' : 'M'}${toX(t).toFixed(1)} ${toY(volume(t, tau)).toFixed(1)}`);
   }
   return pts.join(' ');
-})();
-
-// Nhãn trục x; dx/dy đẩy nhãn sang góc trống cạnh điểm đường cong cắt trục
-// (tại −π, π, 2π đường cong đi qua đúng vị trí vạch chia).
-const X_TICKS = [
-  { v: -Math.PI, label: '−π', dx: -12, dy: 20 },
-  { v: -Math.PI / 2, label: '−π/2', dx: 0, dy: -10 },
-  { v: Math.PI / 2, label: 'π/2', dx: 0, dy: 20 },
-  { v: Math.PI, label: 'π', dx: -10, dy: 20 },
-  { v: (3 * Math.PI) / 2, label: '3π/2', dx: 0, dy: -10 },
-  { v: 2 * Math.PI, label: '2π', dx: -14, dy: -10 },
-];
+};
+const CURVE_FAST = curve(TAU_FAST);
+const CURVE_SLOW = curve(TAU_SLOW);
 
 const GRID_X = Array.from({ length: 15 }, (_, i) => i * 40);
 const GRID_Y = Array.from({ length: 9 }, (_, i) => 10 + i * 40);
 
-function TrigPlot({ text }) {
-  const max = { x: toX(Math.PI / 2), y: toY(1) };
-  const min = { x: toX((3 * Math.PI) / 2), y: toY(-1) };
+function ReactionPlot({ text }) {
+  const fast = { x: toX(T1), y: toY(volume(T1, TAU_FAST)) };
+  const slow = { x: toX(T1), y: toY(volume(T1, TAU_SLOW)) };
+  const labelX = toX(430);
 
   return (
     <figure className="auth-plot" aria-label={text.plotLabel}>
@@ -63,35 +59,32 @@ function TrigPlot({ text }) {
         </g>
 
         <g className="auth-plot-axis">
-          <line x1="12" y1={O.y} x2="546" y2={O.y} />
-          <line x1={O.x} y1="332" x2={O.x} y2="8" />
+          <line x1={O.x - 12} y1={O.y} x2="546" y2={O.y} />
+          <line x1={O.x} y1={O.y + 12} x2={O.x} y2="8" />
           <path d={`M546 ${O.y} l-8 -4 v8 Z`} />
           <path d={`M${O.x} 8 l-4 8 h8 Z`} />
-          <text x="540" y={O.y + 20}>x</text>
-          <text x={O.x + 10} y="20">y</text>
-          <text x={O.x - 14} y={O.y - 8}>O</text>
-          {X_TICKS.map((t) => (
-            <text key={t.label} x={toX(t.v) + t.dx} y={O.y + t.dy} textAnchor="middle">
-              {t.label}
-            </text>
-          ))}
-          <text x={O.x - 10} y={max.y + 5} textAnchor="end">1</text>
-          <text x={O.x - 10} y={min.y + 5} textAnchor="end">−1</text>
+          <text x="540" y={O.y + 20}>t</text>
+          <text x={O.x + 10} y="20">V</text>
+          <text x={O.x - 14} y={O.y + 18}>O</text>
+          <text x={fast.x} y={O.y + 20} textAnchor="middle">t₁</text>
+          <text x={O.x - 8} y={fast.y + 5} textAnchor="end">V₁</text>
+          <text x={O.x - 8} y={slow.y + 5} textAnchor="end">V₂</text>
         </g>
 
         <g className="auth-plot-guides">
-          <path d={`M${max.x} ${max.y} V${O.y} M${max.x} ${max.y} H${O.x}`} />
-          <path d={`M${min.x} ${min.y} V${O.y} M${min.x} ${min.y} H${O.x}`} />
+          <path d={`M${fast.x} ${O.y} V${fast.y} H${O.x}`} />
+          <path d={`M${slow.x} ${slow.y} H${O.x}`} />
         </g>
 
-        <path className="auth-plot-curve" d={CURVE} pathLength="1" />
+        <path className="auth-plot-curve" d={CURVE_FAST} pathLength="1" />
+        <path className="auth-plot-curve is-slow" d={CURVE_SLOW} pathLength="1" />
 
         <g className="auth-plot-points">
-          <circle cx={max.x} cy={max.y} r="6" className="auth-plot-point" />
-          <text x={max.x} y={max.y - 16} textAnchor="middle" className="auth-plot-label">{text.plotMax}</text>
-          <circle cx={min.x} cy={min.y} r="7" className="auth-plot-point insight" />
-          <text x={min.x} y={min.y + 30} textAnchor="middle" className="auth-plot-label">{text.plotMin}</text>
-          <text x="24" y="40" className="auth-plot-eq">y = sin x</text>
+          <circle cx={fast.x} cy={fast.y} r="6" className="auth-plot-point" />
+          <circle cx={slow.x} cy={slow.y} r="7" className="auth-plot-point insight" />
+          <text x={labelX} y={toY(volume(430, TAU_FAST)) - 12} textAnchor="middle" className="auth-plot-label">{text.plotFast}</text>
+          <text x={labelX} y={toY(volume(430, TAU_SLOW)) + 28} textAnchor="middle" className="auth-plot-label">{text.plotSlow}</text>
+          <text x={O.x + 22} y="48" className="auth-plot-eq">2H₂O₂ → 2H₂O + O₂</text>
         </g>
       </svg>
 
@@ -126,7 +119,7 @@ export default function AuthLayout({ back, children }) {
           <p>{t.heroText}</p>
         </div>
 
-        <TrigPlot text={t} />
+        <ReactionPlot text={t} />
 
         <div className="auth-hero-foot">{t.heroFoot}</div>
       </section>

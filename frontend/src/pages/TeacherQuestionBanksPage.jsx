@@ -5,9 +5,9 @@ import { confirmDialog, toast } from '../components/Notify';
 import { renderMath } from '../utils/mathRender';
 
 // Ngân hàng đề: giáo viên tải nhiều file Word, mỗi file đặt 1 tên chủ đề.
-// Câu hỏi trong đó dùng cho trò chơi "Đường đua Toán học" của học sinh.
+// Câu hỏi trong đó dùng cho trò chơi "Đường đua Khoa học" của học sinh.
 
-// Gợi ý tên chủ đề từ tên file: "Cap_so_cong-11A.docx" -> "Cap so cong 11A"
+// Gợi ý tên chủ đề từ tên file: "Luc_day_Archimedes-8A.docx" -> "Luc day Archimedes 8A"
 function topicFromFileName(name) {
   return name.replace(/\.docx$/i, '').replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
 }
@@ -170,7 +170,7 @@ export default function TeacherQuestionBanksPage() {
       <div className="page-header">
         <div>
           <h1 className="page-title">Ngân hàng đề</h1>
-          <p className="page-subtitle">Tải đề Word theo từng chủ đề để học sinh luyện tập qua trò chơi Đường đua Toán học</p>
+          <p className="page-subtitle">Tải đề Word theo từng chủ đề để học sinh luyện tập qua trò chơi Đường đua Khoa học</p>
         </div>
       </div>
 
@@ -214,7 +214,7 @@ export default function TeacherQuestionBanksPage() {
                     <input
                       type="text"
                       aria-label={`Tên chủ đề cho ${u.file.name}`}
-                      placeholder="Tên chủ đề, VD: Cấp số cộng"
+                      placeholder="Tên chủ đề, VD: Lực đẩy Archimedes"
                       value={u.title}
                       disabled={u.status === 'uploading' || u.status === 'done'}
                       onChange={(e) => updateUpload(u.key, { title: e.target.value, status: u.status === 'error' ? 'ready' : u.status })}

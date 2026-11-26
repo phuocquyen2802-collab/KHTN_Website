@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MathInsight AI - Design tokens
+   SciInsight AI - Design tokens
    Nền "giấy kẻ ô" xám xanh mát, chữ mực xanh đen, màu chính xanh lam
    (primary) cho thao tác, màu hổ phách (insight) chỉ dùng cho điểm nhấn
    "chỗ cần ôn" (logo, đồ thị trang đăng nhập), màu tím (ai) cho nội dung
@@ -4014,6 +4014,12 @@ tr.exam-subrow > td {
   animation: mi-plot-draw 5s ease-in-out infinite;
 }
 
+/* Đường phản ứng không có chất xúc tác (chậm hơn) */
+.auth-plot-curve.is-slow {
+  stroke: var(--insight);
+  stroke-width: 3;
+}
+
 .auth-plot-point {
   fill: var(--surface);
   stroke: var(--primary);
@@ -4036,8 +4042,8 @@ tr.exam-subrow > td {
 .auth-plot-eq {
   fill: var(--primary-strong);
   font-size: 18px;
-  font-weight: 500;
-  font-style: italic;
+  font-weight: 600;
+  font-style: normal;
   font-family: var(--font-sans);
 }
 
@@ -8316,7 +8322,7 @@ tr.qb-row-new > td {
 }
 
 /* ==========================================================================
-   Trò chơi "Đường đua Toán học" (học sinh)
+   Trò chơi "Đường đua Khoa học" (học sinh)
    ========================================================================== */
 
 .game-step {

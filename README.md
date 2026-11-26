@@ -1,8 +1,8 @@
-# Hệ thống đánh giá & roadmap ôn tập trắc nghiệm Toán 12
+# SciInsight AI - Hệ thống đánh giá & roadmap ôn tập trắc nghiệm Khoa học tự nhiên 8
 
-Đề tài KHKT: Đánh giá chất lượng bài làm trắc nghiệm của học sinh khối 12, từ
-đó đưa ra roadmap ôn tập và bài tập tương tự cho những phần học sinh hay sai
-nhất.
+Đề tài KHKT: Đánh giá chất lượng bài làm trắc nghiệm môn Khoa học tự nhiên
+(Vật lí, Hoá học, Sinh học) của học sinh lớp 8, từ đó đưa ra roadmap ôn tập và
+bài tập tương tự cho những phần học sinh hay sai nhất.
 
 ## Cấu trúc dự án
 
@@ -17,7 +17,7 @@ docs/       Tài liệu thiết kế + nhật ký tiến trình
 
 - **Node.js 18+** (kèm `npm`). Kiểm tra: `node -v`.
 - **LibreOffice** (bản mới nhất, cài mặc định là được) - dùng để chuyển công
-  thức Toán/hình vẽ trong file Word (.docx) sang ảnh, và chuyển file đáp án
+  thức Vật lí, Hoá học/hình vẽ trong file Word (.docx) sang ảnh, và chuyển file đáp án
   Word sang PDF để xem trước. Thiếu cái này thì tính năng tải đề/đáp án từ
   Word vẫn chạy nhưng thiếu ảnh công thức và không xem trước Word được.
   - Windows/macOS: tải tại https://www.libreoffice.org/download/download/
@@ -103,7 +103,7 @@ học sinh" trên dashboard giáo viên.
 - **Frontend gọi API báo lỗi mạng/CORS**: kiểm tra backend đã chạy ở cổng
   5000 chưa, hoặc `frontend/.env` (nếu có) có `VITE_API_URL` trỏ đúng
   `http://localhost:5000/api` không.
-- **Thiếu ảnh công thức Toán / không xem trước được file Word**: chưa cài
+- **Thiếu ảnh công thức / không xem trước được file Word**: chưa cài
   LibreOffice hoặc chưa có trong PATH hệ thống.
 - **Lỗi liên quan `GEMINI_API_KEY`**: chỉ ảnh hưởng tính năng sinh roadmap
   AI, xem [docs/GEMINI_SETUP.md](docs/GEMINI_SETUP.md).
