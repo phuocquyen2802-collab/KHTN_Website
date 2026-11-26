@@ -184,8 +184,34 @@ ngay bằng tài khoản mẫu trong README.md.
   "Science IQ" theo yêu cầu người dùng
 - [x] Bước 39 (chân trang): Đổi thông tin người thực hiện ở chân trang giới
   thiệu thành "Giáo viên thực hiện: Nguyễn Kim Chi"
+- [x] Bước 40 (tài khoản mặc định): Thay tài khoản giáo viên mặc định `admin`
+  bằng tài khoản `nguyenkimchi` (tên hiển thị "Nguyễn Kim Chi")
 
 ## Lịch sử cập nhật
+
+### 2026-11-26 - Đổi tài khoản giáo viên mặc định thành nguyenkimchi (Bước 40)
+- Đã làm gì: Sửa bản ghi giáo viên duy nhất trong `data/users.json`: tên
+  đăng nhập (trường `email`) từ `admin` thành `nguyenkimchi`, tên hiển thị từ
+  "Admin" thành "Nguyễn Kim Chi", mật khẩu mới do người dùng chọn được băm
+  bằng bcrypt (cost 12, mạnh hơn cost 10 cũ) - trong repo chỉ có mã băm, không
+  có mật khẩu dạng chữ. Giữ nguyên `id` = `u-teacher-1` để các đề thi, nhóm,
+  thông báo đã gắn với giáo viên này không bị mất liên kết. Tài khoản `admin`
+  cũ không còn đăng nhập được. Cập nhật README (bảng tài khoản mặc định) và
+  `docs/DEPLOY_DOCKER.md` (việc đầu tiên sau khi deploy).
+- Vì sao làm như vậy: Theo yêu cầu người dùng, website dùng tài khoản riêng
+  của giáo viên Nguyễn Kim Chi thay cho `admin` / `admin123` (mật khẩu cũ ghi
+  công khai trong README nên ai cũng biết). Repo GitHub đang để CÔNG KHAI nên
+  không ghi mật khẩu mới vào README hay nhật ký này.
+- Kiểm tra: đăng nhập qua API `/api/auth/login` bằng tài khoản mới thành công
+  (trả về token, tên "Nguyễn Kim Chi", vai trò teacher); đăng nhập `admin` /
+  `admin123` bị từ chối.
+- Lưu ý khi deploy Docker: dữ liệu `data/` chỉ được chép vào server ở LẦN
+  CHẠY ĐẦU TIÊN (volume còn trống). Server nào đã chạy từ trước vẫn giữ tài
+  khoản cũ - cần tự đổi trong mục Cài đặt hoặc sửa `users.json` trong volume.
+- File nào bị ảnh hưởng: `data/users.json`, `README.md`,
+  `docs/DEPLOY_DOCKER.md`, `docs/STEP_BY_STEP.md`.
+- Việc cần làm tiếp theo: cân nhắc chuyển repo GitHub sang chế độ riêng tư
+  (Private) vì `data/users.json` có mã băm mật khẩu giáo viên.
 
 ### 2026-11-26 - Đổi người thực hiện ở chân trang (Bước 39)
 - Đã làm gì: Chân trang giới thiệu trước đây ghi "Giáo viên hướng dẫn:

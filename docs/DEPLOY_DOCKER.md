@@ -64,8 +64,9 @@ docker compose logs -f     # xem log, Ctrl + C để thoát
 
 Mở trình duyệt: `http://<IP-server>`.
 
-**Việc đầu tiên sau khi chạy:** đăng nhập `admin` / `admin123`, vào **Cài đặt**
-và **đổi mật khẩu ngay** - website đã công khai trên mạng.
+**Việc đầu tiên sau khi chạy:** đăng nhập tài khoản giáo viên `nguyenkimchi`
+(mật khẩu do giáo viên giữ riêng), vào **Cài đặt** và **đổi mật khẩu** nếu cần -
+website đã công khai trên mạng.
 
 Lần chạy đầu, dữ liệu ban đầu được chép từ thư mục `data/` trong mã nguồn
 (đúng như lúc bạn `git push`). Các lần sau dữ liệu trên server được giữ

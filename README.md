@@ -88,7 +88,10 @@ Hướng dẫn đầy đủ: [docs/DEPLOY_DOCKER.md](docs/DEPLOY_DOCKER.md).
 
 | Tên đăng nhập | Mật khẩu |
 |---|---|
-| `admin` | `admin123` |
+| `nguyenkimchi` | Giáo viên giữ riêng (không ghi trong tài liệu vì repo công khai) |
+
+Mật khẩu chỉ lưu dạng mã băm bcrypt trong `data/users.json`. Muốn đổi mật
+khẩu: đăng nhập rồi vào mục **Cài đặt**.
 
 Tài khoản học sinh: đăng nhập bằng tài khoản trên rồi tạo trong mục "Thêm
 học sinh" trên dashboard giáo viên.
