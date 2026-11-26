@@ -182,8 +182,27 @@ ngay bằng tài khoản mẫu trong README.md.
   đăng nhập, logo, trò chơi, email và tài liệu
 - [x] Bước 38 (đổi tên): Đổi tên website từ "SciInsight AI" thành
   "Science IQ" theo yêu cầu người dùng
+- [x] Bước 39 (chân trang): Đổi thông tin người thực hiện ở chân trang giới
+  thiệu thành "Giáo viên thực hiện: Nguyễn Kim Chi"
 
 ## Lịch sử cập nhật
+
+### 2026-11-26 - Đổi người thực hiện ở chân trang (Bước 39)
+- Đã làm gì: Chân trang giới thiệu trước đây ghi "Giáo viên hướng dẫn:
+  Nguyễn Thị Minh Huệ" và "Học sinh thực hiện: Phạm Ngọc Quỳnh Anh, Nguyễn
+  Đăng Hoàng" (của dự án Toán cũ). Nay đổi thành 1 dòng "Giáo viên thực hiện:
+  Nguyễn Kim Chi" (bản tiếng Anh: "Created by teacher"). Tên lưu ở
+  `PROJECT_CREDITS` trong `frontend/src/config/brand.js`: `teacher` =
+  "Nguyễn Kim Chi", `students` = danh sách rỗng. Dòng "Học sinh thực hiện" ở
+  `LandingPage.jsx` giờ chỉ hiện khi `students` có tên, nên sau này muốn thêm
+  học sinh chỉ cần điền tên vào danh sách là dòng đó tự hiện lại.
+- Vì sao làm như vậy: Theo yêu cầu người dùng - website KHTN 8 do giáo viên
+  Nguyễn Kim Chi thực hiện, không còn là nhóm thực hiện của dự án Toán cũ.
+- Kiểm tra: build frontend (`vite build`) thành công.
+- File nào bị ảnh hưởng: `frontend/src/config/brand.js`,
+  `frontend/src/i18n/publicText.js`, `frontend/src/pages/LandingPage.jsx`,
+  `docs/STEP_BY_STEP.md`.
+- Việc cần làm tiếp theo: không có.
 
 ### 2026-11-26 - Đổi tên website thành Science IQ (Bước 38)
 - Đã làm gì: Đổi tên thương hiệu "SciInsight AI" (đặt tạm ở Bước 37) thành

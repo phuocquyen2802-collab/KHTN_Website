@@ -257,10 +257,12 @@ export default function LandingPage() {
               <span className="lp-credit-label">{t.creditTeacher}:</span>
               <span className="lp-credit-names">{PROJECT_CREDITS.teacher}</span>
             </p>
-            <p className="lp-credit">
-              <span className="lp-credit-label">{t.creditStudents}:</span>
-              <span className="lp-credit-names">{PROJECT_CREDITS.students.join(', ')}</span>
-            </p>
+            {PROJECT_CREDITS.students.length > 0 && (
+              <p className="lp-credit">
+                <span className="lp-credit-label">{t.creditStudents}:</span>
+                <span className="lp-credit-names">{PROJECT_CREDITS.students.join(', ')}</span>
+              </p>
+            )}
           </div>
         </div>
       </footer>
