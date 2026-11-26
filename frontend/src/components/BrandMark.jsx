@@ -1,4 +1,4 @@
-// Logo SciInsight AI: bình tam giác (bình Erlenmeyer) của phòng thí nghiệm
+// Logo Science IQ: bình tam giác (bình Erlenmeyer) của phòng thí nghiệm
 // Khoa học tự nhiên trên nền xanh, bọt khí tô màu hổ phách tượng trưng cho
 // "insight" - chỗ hệ thống chỉ ra học sinh cần ôn lại. Dùng chung cho
 // sidebar, trang đăng nhập và favicon (frontend/public/favicon.svg).

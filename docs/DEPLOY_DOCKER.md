@@ -1,4 +1,4 @@
-# Triển khai SciInsight AI lên server Ubuntu bằng Docker
+# Triển khai Science IQ lên server Ubuntu bằng Docker
 
 Toàn bộ website (giao diện + API + LibreOffice) chạy trong **1 container**,
 mở ra ngoài **1 cổng** (mặc định cổng 80). Dữ liệu được lưu trong một ổ dữ
@@ -143,7 +143,7 @@ Email được gửi qua Resend API (https://resend.com, miễn phí 3.000 email
 4. Thêm vào `backend/.env` trên server (xem mẫu ở `backend/.env.example`):
    ```
    APP_URL=https://ten-mien-cua-website
-   EMAIL_FROM="SciInsight AI <support@ten-mien-da-xac-minh>"
+   EMAIL_FROM="Science IQ <support@ten-mien-da-xac-minh>"
    RESEND_API_KEY=re_xxxxxxxx
    ```
    `APP_URL` là địa chỉ người dùng mở website - nút trong email trỏ về đây.

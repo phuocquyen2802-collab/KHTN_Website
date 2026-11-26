@@ -1,4 +1,4 @@
-# SciInsight AI - Hệ thống đánh giá & roadmap ôn tập trắc nghiệm Khoa học tự nhiên 8
+# Science IQ - Hệ thống đánh giá & roadmap ôn tập trắc nghiệm Khoa học tự nhiên 8
 
 Đề tài KHKT: Đánh giá chất lượng bài làm trắc nghiệm môn Khoa học tự nhiên
 (Vật lí, Hoá học, Sinh học) của học sinh lớp 8, từ đó đưa ra roadmap ôn tập và

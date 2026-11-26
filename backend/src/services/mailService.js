@@ -6,7 +6,7 @@
 //   2. SMTP bất kỳ (Brevo, Gmail...): SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS
 //      + EMAIL_FROM. Chỉ dùng khi không đặt RESEND_API_KEY.
 // EMAIL_FROM (tên cũ MAIL_FROM vẫn dùng được) phải thuộc tên miền đã xác minh
-// ở dịch vụ gửi mail, VD: SciInsight AI <support@ten-mien-cua-ban>.
+// ở dịch vụ gửi mail, VD: Science IQ <support@ten-mien-cua-ban>.
 //
 // APP_URL là địa chỉ trang web (VD https://ten-mien-cua-ban), dùng để tạo
 // đường dẫn trong email. Không lấy từ header Host của request vì kẻ xấu có
@@ -103,7 +103,7 @@ async function sendViaResend({ to, subject, html, text, tags }) {
       headers: {
         Authorization: `Bearer ${env('RESEND_API_KEY')}`,
         'Content-Type': 'application/json',
-        'User-Agent': 'sciinsight-backend/1.0',
+        'User-Agent': 'scienceiq-backend/1.0',
       },
       body: JSON.stringify({ from: fromAddress(), to: [to], subject, html, text, tags }),
       signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
@@ -150,12 +150,12 @@ function formatTime(date) {
 
 const RESET_TEXT = {
   vi: {
-    subject: 'Đặt lại mật khẩu SciInsight AI',
+    subject: 'Đặt lại mật khẩu Science IQ',
     preheader: (account, m) => `Đường dẫn đặt mật khẩu mới cho tài khoản ${account}, hết hạn sau ${m} phút.`,
     tagline: 'Phần mềm học Khoa học tự nhiên 8 cùng AI',
     title: 'Đặt lại mật khẩu',
     hello: (name) => `Chào ${name},`,
-    intro: 'Chúng tôi nhận được yêu cầu đặt lại mật khẩu cho tài khoản SciInsight AI của bạn. Bấm nút bên dưới để tạo mật khẩu mới.',
+    intro: 'Chúng tôi nhận được yêu cầu đặt lại mật khẩu cho tài khoản Science IQ của bạn. Bấm nút bên dưới để tạo mật khẩu mới.',
     account: 'Tài khoản',
     requestedAt: 'Thời gian yêu cầu',
     expiresAt: 'Hết hạn lúc',
@@ -165,18 +165,18 @@ const RESET_TEXT = {
     notYouTitle: 'Bạn không yêu cầu đổi mật khẩu?',
     notYouText: 'Hãy bỏ qua email này, mật khẩu hiện tại của bạn vẫn giữ nguyên. Không chuyển tiếp email này cho người khác.',
     signOff: 'Trân trọng,',
-    team: 'Đội ngũ SciInsight AI',
-    footerAuto: 'Email này được gửi tự động vì có yêu cầu đặt lại mật khẩu trên SciInsight AI.',
+    team: 'Đội ngũ Science IQ',
+    footerAuto: 'Email này được gửi tự động vì có yêu cầu đặt lại mật khẩu trên Science IQ.',
     footerHelp: 'Cần hỗ trợ? Hãy liên hệ giáo viên hoặc quản trị viên của bạn.',
     textOpen: 'Mở đường dẫn sau để đặt mật khẩu mới:',
   },
   en: {
-    subject: 'Reset your SciInsight AI password',
+    subject: 'Reset your Science IQ password',
     preheader: (account, m) => `Your link to set a new password for ${account}. It expires in ${m} minutes.`,
     tagline: 'Learn Grade 8 Natural Science with AI',
     title: 'Reset your password',
     hello: (name) => `Hi ${name},`,
-    intro: 'We received a request to reset the password of your SciInsight AI account. Press the button below to choose a new password.',
+    intro: 'We received a request to reset the password of your Science IQ account. Press the button below to choose a new password.',
     account: 'Account',
     requestedAt: 'Requested at',
     expiresAt: 'Expires at',
@@ -186,8 +186,8 @@ const RESET_TEXT = {
     notYouTitle: "Didn't ask to reset your password?",
     notYouText: "Just ignore this email - your current password stays the same. Don't forward this email to anyone.",
     signOff: 'Best regards,',
-    team: 'The SciInsight AI team',
-    footerAuto: 'This email was sent automatically because a password reset was requested on SciInsight AI.',
+    team: 'The Science IQ team',
+    footerAuto: 'This email was sent automatically because a password reset was requested on Science IQ.',
     footerHelp: 'Need help? Contact your teacher or administrator.',
     textOpen: 'Open this link to choose a new password:',
   },
@@ -261,7 +261,7 @@ function buildPasswordResetEmail({ name, account, link, minutes, requestedAt = n
                 <tr>
                   <td width="40" height="40" align="center" valign="middle" style="width:40px;height:40px;background-color:${C.primary};border-radius:11px;font-family:${FONT};font-size:20px;line-height:40px;font-weight:700;color:#ffffff;">S</td>
                   <td style="padding-left:12px;font-family:${FONT};">
-                    <div style="font-size:17px;line-height:1.25;font-weight:700;color:${C.ink};">SciInsight <span style="color:${C.primary};">AI</span></div>
+                    <div style="font-size:17px;line-height:1.25;font-weight:700;color:${C.ink};">Science <span style="color:${C.primary};">IQ</span></div>
                     <div style="font-size:12.5px;line-height:1.4;color:${C.muted};">${escapeHtml(t.tagline)}</div>
                   </td>
                 </tr>
@@ -355,7 +355,7 @@ function buildPasswordResetEmail({ name, account, link, minutes, requestedAt = n
           <tr>
             <td align="center" style="padding:24px 20px 0;font-family:${FONT};font-size:12px;line-height:1.7;color:${C.faint};">
               ${escapeHtml(t.footerAuto)}<br>${escapeHtml(t.footerHelp)}<br>
-              <a href="${escapeHtml(site)}" target="_blank" rel="noopener" style="color:${C.muted};text-decoration:underline;">${escapeHtml(siteLabel)}</a> &middot; &copy; ${year} SciInsight AI
+              <a href="${escapeHtml(site)}" target="_blank" rel="noopener" style="color:${C.muted};text-decoration:underline;">${escapeHtml(siteLabel)}</a> &middot; &copy; ${year} Science IQ
             </td>
           </tr>
 
@@ -368,7 +368,7 @@ function buildPasswordResetEmail({ name, account, link, minutes, requestedAt = n
 
   // Bản chữ thuần cho hộp thư không hiển thị HTML (và giúp ít bị vào Spam).
   const text = [
-    `SciInsight AI - ${t.title}`,
+    `Science IQ - ${t.title}`,
     '',
     t.hello(displayName),
     '',

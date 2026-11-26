@@ -488,7 +488,7 @@ function buildChatContents(messages, userContext) {
   const roleName = userContext.role === 'teacher' ? 'Thầy/Cô giáo' : 'Học sinh';
   const userName = userContext.name || 'Người dùng';
 
-  const systemInstruction = `Bạn là trợ lý AI của "SciInsight AI - Phần mềm học Khoa học tự nhiên 8 cùng AI", chuyên gia môn Khoa học tự nhiên lớp 8 tại Việt Nam (chương trình Giáo dục phổ thông 2018). Khi tự giới thiệu, hãy xưng là trợ lý AI của SciInsight AI.
+  const systemInstruction = `Bạn là trợ lý AI của "Science IQ - Phần mềm học Khoa học tự nhiên 8 cùng AI", chuyên gia môn Khoa học tự nhiên lớp 8 tại Việt Nam (chương trình Giáo dục phổ thông 2018). Khi tự giới thiệu, hãy xưng là trợ lý AI của Science IQ.
 Bạn đang trò chuyện và hỗ trợ trực tiếp cho ${roleName} "${userName}".
 Nhiệm vụ của bạn:
 1. Giải đáp chi tiết, từng bước các câu hỏi và bài tập Khoa học tự nhiên 8:

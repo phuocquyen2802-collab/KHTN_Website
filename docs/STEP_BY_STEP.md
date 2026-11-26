@@ -180,8 +180,39 @@ ngay bằng tài khoản mẫu trong README.md.
   sang môn Khoa học tự nhiên lớp 8 (Vật lí, Hoá học, Sinh học) - đổi thương
   hiệu thành SciInsight AI, viết lại prompt AI, nội dung trang giới thiệu/
   đăng nhập, logo, trò chơi, email và tài liệu
+- [x] Bước 38 (đổi tên): Đổi tên website từ "SciInsight AI" thành
+  "Science IQ" theo yêu cầu người dùng
 
 ## Lịch sử cập nhật
+
+### 2026-11-26 - Đổi tên website thành Science IQ (Bước 38)
+- Đã làm gì: Đổi tên thương hiệu "SciInsight AI" (đặt tạm ở Bước 37) thành
+  "Science IQ", giữ nguyên khẩu hiệu "Phần mềm học Khoa học tự nhiên 8 cùng
+  AI". Giao diện lấy tên từ 1 hằng số `APP_NAME` trong
+  `frontend/src/config/brand.js` nên chỉ cần sửa 1 chỗ là sidebar, trang giới
+  thiệu, trang đăng nhập, tiêu đề tab, trang Trợ lý AI đều đổi theo. Sửa thêm
+  các chỗ ghi tên trực tiếp: thẻ `<title>`/mô tả trong `frontend/index.html`,
+  prompt Trợ lý AI (AI tự giới thiệu là "trợ lý AI của Science IQ"), email đặt
+  lại mật khẩu (tiêu đề, nội dung, chữ ký; dòng thương hiệu trong email hiện
+  "Science **IQ**" với chữ IQ màu xanh chủ đạo, giống cách cũ tô màu chữ
+  "AI"), `EMAIL_FROM` mẫu, README, `docs/DEPLOY_DOCKER.md`,
+  `docs/Document.html`, comment đầu `Dockerfile`, `index.css`,
+  `BrandMark.jsx`, `GameCharacters.jsx`.
+- Vì sao làm như vậy: Người dùng chọn tên chính thức cho website là
+  "Science IQ". Logo bình tam giác giữ nguyên vì không gắn với tên cũ. Mục
+  nhật ký Bước 37 bên dưới vẫn ghi tên "SciInsight AI" vì đó là lịch sử thật.
+  Các định danh kỹ thuật "mathinsight" (khoá mã hoá mật khẩu, volume Docker)
+  vẫn giữ nguyên như đã giải thích ở Bước 37.
+- Kiểm tra: kiểm tra cú pháp các file đã sửa (`node --check`, esbuild) đều
+  đạt; tìm lại toàn bộ dự án không còn chữ "SciInsight" ngoài nhật ký này.
+- File nào bị ảnh hưởng: `frontend/src/config/brand.js`, `frontend/index.html`,
+  `frontend/src/components/BrandMark.jsx`, `frontend/src/components/GameCharacters.jsx`,
+  `frontend/src/index.css`, `backend/src/services/geminiService.js`,
+  `backend/src/services/mailService.js`, `backend/.env.example`, `Dockerfile`,
+  `README.md`, `docs/DEPLOY_DOCKER.md`, `docs/Document.html`,
+  `docs/STEP_BY_STEP.md`.
+- Việc cần làm tiếp theo: giống Bước 37 (chạy thử website, thử sinh lộ trình
+  AI với API key thật, cập nhật tên miền trong `backend/.env` nếu có).
 
 ### 2026-11-26 - Chuyển website từ Toán 12 sang Khoa học tự nhiên 8 (Bước 37)
 - Đã làm gì: Sửa toàn bộ chữ và nội dung đang nói về Toán sang môn Khoa

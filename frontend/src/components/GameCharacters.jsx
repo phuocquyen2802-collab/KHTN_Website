@@ -1,5 +1,5 @@
 // Nhân vật của trò chơi "Đường đua Khoa học" - bộ linh vật riêng của
-// SciInsight AI (vẽ bằng SVG, không dùng nhân vật có bản quyền). Mỗi nhân vật
+// Science IQ (vẽ bằng SVG, không dùng nhân vật có bản quyền). Mỗi nhân vật
 // có 3 biểu cảm: neutral (bình thường), happy (trả lời đúng), sad (trả lời sai).
 
 export const CHARACTERS = [
